@@ -1,6 +1,6 @@
 <?php
 //@author Mathilde <mathilde..brx@gmail.com>
-
+class DB_Manager {
 ////////////////////////////////////////////////USER/////////////////////////////////////////////////////////////////////
 //Methode qui renvoie la liste des users
  function readUsers() : array {
@@ -125,5 +125,5 @@ function deleteDebt($nbDebt): void {
         $listDebts = $stmt->fetchAll();
         return $listDebts;
     }
-
+}
 ?>
