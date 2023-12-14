@@ -1,49 +1,54 @@
 <?php
 include_once "../M/DB_Manager.class.php";
-
-/*récupération du tableau user de la base de donnée
-$listUsers = readUsers();
-print_r($listUsers);
-*/  
+include_once "../M/User.class.php";
+include_once "../M/Penality.class.php";
+include_once "../M/Debt.class.php";
 
 
 //création d'un nouvel utilisateur à insérer dans la base de donnée
-/*$nameUser = "Scott";
-$firstnameUser = "Michael";
-$telUser = "bonjour";
-$mailUser = "mvbuz@gmail.com";
-$passwordUser = "password1";
-*/
+/*
+$nameUser = $_POST["Name_User"];
+$firstnameUser = $_POST["FirstName_User"];
+$telUser = $_POST["Tel"];
+$mailUser = $_POST["Mail"];
+$passwordUser = $_POST["password"];
+$user1 = new User ($nameUser,$firstnameUser,$telUser,$mailUser,$passwordUser );
 
 //vérification des conditions avant de créer: name et firstname composés uniquement de lettres, tel composé uniquement de chiffres. 
-/*if(isAlpha($nameUser) && isAlpha($firstnameUser) && isBeta($telUser)) {
-   createUser($nameUser, $firstnameUser, $telUser, $mailUser, $passwordUser);
+if(DB_Manager::isAlpha($nameUser) && DB_Manager::isAlpha($firstnameUser) && DB_Manager::isBeta($telUser)) {
+  DB_Manager::createUser($user1);
   } else {
 	echo "ERROR";
   }
+
+//récupération du tableau user de la base de donnée
+$listUsers = DB_Manager::readUsers();
+print_r($listUsers);
+
+
+
+$idUser= $_POST ["ID_User"];
+DB_Manager::deleteUser($idUser);
 */
 
-/*
-$idUser = 5;
-deleteUser($idUser);
-*/
+//Create new penality
 
-/*Create new penality
-$libellePenality = "Petite Insulte";
-$pricePenality = 0.10;
-createPenality($libellePenality, $pricePenality);
-*/
+$libelle = $_POST["Libelle"];
+$price = $_POST["Price"];
+$penality1 = new Penality ($libelle, $price);
+print_r($penality1);
+DB_Manager::createPenality($penality1);
 
-/* read penality table
-$listPenalities = readPenalities();
+ //read penality table
+$listPenalities = DB_Manager::readPenalities();
 print_r($listPenalities);
-*/
 
 
-/*delete line in penality table from id
-$idPenality = 1;
-deletePenality($idPenality)
-*/
+
+//delete line in penality table from id
+$idPenality = $_POST["ID_Penality"];
+DB_Manager::deletePenality($idPenality);
+
 
 
 ?>
