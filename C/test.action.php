@@ -6,7 +6,7 @@ include_once "../M/Debt.class.php";
 
 
 //création d'un nouvel utilisateur à insérer dans la base de donnée
-/*
+
 $nameUser = $_POST["Name_User"];
 $firstnameUser = $_POST["FirstName_User"];
 $telUser = $_POST["Tel"];
@@ -29,7 +29,7 @@ print_r($listUsers);
 
 $idUser= $_POST ["ID_User"];
 DB_Manager::deleteUser($idUser);
-*/
+
 
 //Create new penality
 
@@ -48,6 +48,8 @@ $listPenalities = DB_Manager::readPenalities();
 //delete line in penality table from id
 $idPenality = $_POST["ID_Penality"];
 DB_Manager::deletePenality($idPenality);
+
+
 
 
 
