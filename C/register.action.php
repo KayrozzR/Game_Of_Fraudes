@@ -1,12 +1,12 @@
 <?php
+/*@author Mathilde <mathilde.brx@gmail.com> */ 
+session_start();
+
 include_once "../M/DB_Manager.class.php";
 include_once "../M/User.class.php";
-include_once "../M/Penality.class.php";
-include_once "../M/Debt.class.php";
-
 
 //création d'un nouvel utilisateur à insérer dans la base de donnée
-/*
+
 $nameUser = $_POST["Name_User"];
 $firstnameUser = $_POST["FirstName_User"];
 $telUser = $_POST["Tel"];
@@ -21,34 +21,6 @@ if(DB_Manager::isAlpha($nameUser) && DB_Manager::isAlpha($firstnameUser) && DB_M
 	echo "ERROR";
   }
 
-//récupération du tableau user de la base de donnée
-$listUsers = DB_Manager::readUsers();
-print_r($listUsers);
 
-
-
-$idUser= $_POST ["ID_User"];
-DB_Manager::deleteUser($idUser);
-*/
-
-//Create new penality
-
-$libelle = $_POST["Libelle"];
-$price = $_POST["Price"];
-$penality1 = new Penality ($libelle, $price);
-print_r($penality1);
-DB_Manager::createPenality($penality1);
-
- //read penality table
-$listPenalities = DB_Manager::readPenalities();
-
-
-
-
-//delete line in penality table from id
-$idPenality = $_POST["ID_Penality"];
-DB_Manager::deletePenality($idPenality);
-
-
-
+header("Location:../V/");
 ?>
