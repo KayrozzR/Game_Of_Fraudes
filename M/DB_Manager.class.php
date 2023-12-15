@@ -19,8 +19,9 @@ class DB_Manager {
 public static function createUser(User $user) : void {       
     $bdd = new PDO('mysql:host=localhost;dbname=Game_of_fraudes;charset=utf8mb4', 'root', '');
     $sql = "INSERT INTO user (NAME_USER, FIRSTNAME_USER, TEL, MAIL, PASSWORD) VALUES (?,?,?,?,?)";
+    $hashedPassword = password_hash($user->getPasswordUser(), PASSWORD_DEFAULT);
     $stmt= $bdd->prepare($sql);
-    $stmt->execute([$user->getNameUser(),$user->getFirstnameUser(),$user->getTelUser(),$user->getMailUser(), $user->getPasswordUser() ]);
+    $stmt->execute([$user->getNameUser(),$user->getFirstnameUser(),$user->getTelUser(),$user->getMailUser(),$hashedPassword ]);
 }
 /** @author Mathilde <mathilde.brx@gmail.com>*/
 //fonction qui vérifie que l'entrée ne contient que des lettres
@@ -33,6 +34,34 @@ public static function isAlpha ($str) {
 public static function isBeta ($str1) {
     //>((string)str)-(bool)>
    return preg_match('/^([0-9]*)$/',$str1);
+}
+/** @author Simon  */
+public static function login($Inputemail, $Inputpassword) {
+    $bdd = new PDO('mysql:host=localhost;dbname=Game_of_fraudes;charset=utf8mb4', 'root', '');
+    $stmt= $bdd ->prepare("SELECT * FROM user WHERE Mail = ?");
+    $stmt->execute([$Inputemail]);
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    // Vérifier le mot de passe
+    if ($user && password_verify($Inputpassword, $user['Password'])) {
+
+        session_start();  // Démarrer la session
+
+        // Stocker des informations utiles dans la session
+        $_SESSION['user_id'] = $user['ID_User'];
+        $_SESSION['user_email'] = $user['Mail'];
+
+        // Authentification réussie
+        echo "Authentification réussie. Bienvenue, " . $user['Mail'];
+    } else {
+        // Authentification échouée
+        echo "Identifiants incorrects. Veuillez réessayer.";
+    }
+}
+
+public static function closeConnection()
+{
+    $this->pdo = null;
 }
 
 /** @author Mathilde <mathilde.brx@gmail.com>*/
@@ -120,6 +149,13 @@ public static function addCptDenounce($IDUser): void {
     $stmt= $bdd->prepare($sql);
     $stmt->execute([$IDUser]);
 }
+
+
+/** @author Simon <simon-loro@live.fr>*/
+
+
+
+
 
 }
 

@@ -52,11 +52,6 @@ DB_Manager::deletePenality($idPenality);
 
 
 
-$message = "You have been denounced, looser!";
-
-mail("mathilde.brx@gmail.com", "La tuile", $message);
-
-
 
 
 
