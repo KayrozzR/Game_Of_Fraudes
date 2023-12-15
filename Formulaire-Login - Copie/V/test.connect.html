@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil</title>
+</head>
+<body>
+    <h1>Page de Profil</h1>
+
+
+    <?php
+    session_start();
+
+    if (isset($_SESSION['Mail'])) {
+        echo '<p>Bienvenue sur votre profil, ' . $_SESSION['Name'] . '!</p>';
+    } else {
+        echo '<p>Vous n\'êtes pas connecté. <a href="login.php">Connexion</a></p>';
+    }
+    ?>
+
+</body>
+</html>
