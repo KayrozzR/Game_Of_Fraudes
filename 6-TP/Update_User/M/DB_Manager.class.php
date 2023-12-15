@@ -16,7 +16,7 @@ class DB_Manager {
 
 //methode qui ajoute une personne dans la DB
 public static function createUser(User $user) : void {       
-    $bdd = new PDO('mysql:host=localhost;dbname=Game_of_fraudes;charset=utf8mb4', 'root', '');
+    $bdd = new PDO('mysql:host=localhost;dbname=game_of_fraudes;charset=utf8mb4', 'root', '');
     $sql = "INSERT INTO user (NAME_USER, FIRSTNAME_USER, TEL, MAIL, PASSWORD) VALUES (?,?,?,?,?)";
     $stmt= $bdd->prepare($sql);
     $stmt->execute([$user->getNameUser(),$user->getFirstnameUser(),$user->getTelUser(),$user->getMailUser(), $user->getPasswordUser() ]);
@@ -166,12 +166,14 @@ public static function updateDebt($status,$idDebt) : void {
     $stmt->execute([$status, $idDebt]);
     }
 
-public static function createDebt(User $user, Penality $penality, $idDebt) : void {       
+public static function createDebt($debt) : void {
     $bdd = new PDO('mysql:host=localhost;dbname=Game_of_fraudes;charset=utf8mb4', 'root', '');
-    $sql = "INSERT INTO debt (ID_USER, LIBELLE, DETAIL) VALUES (?,?,?)";
+    $sql = "INSERT INTO debt (`Date`, `Status`, `ID_Giver`, `ID_Receiver`, `ID_Penality`) VALUES
+    (?,?,?,?,?);";
     $stmt= $bdd->prepare($sql);
-    $stmt->execute([$firstnameUser, $libellePenality, $details]);
+    $stmt->execute([$debt->getDate(),$debt->getStatus(),$debt->getIdReceiver()->getIdUser(),$debt->getIdUser()->getIdUser(),$debt->getPenality()->getIdPenality()]); 
     }
+
 }
 
 

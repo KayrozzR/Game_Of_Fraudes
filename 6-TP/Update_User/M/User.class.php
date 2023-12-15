@@ -10,12 +10,13 @@ class User {
     private int $cpt_Denounce;
 
 
-    public function __construct(string $nameUser, string $firstnameUser, string $telUser, string $mailUser,string $passwordUser){
+    public function __construct(int $idUser,string $nameUser, string $firstnameUser, string $telUser, string $mailUser,string $passwordUser){
         $this->nameUser = $nameUser;
         $this->firstnameUser = $firstnameUser;
         $this->telUser = $telUser;
         $this->mailUser = $mailUser;
         $this->passwordUser = password_hash($passwordUser, PASSWORD_DEFAULT);
+        $this->idUser = $idUser;
         // self :: $cpt_Denounce++;
     }
 

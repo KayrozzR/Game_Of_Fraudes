@@ -6,18 +6,20 @@ class Debt
 {
     private int $idDebt;
     private string $date;
-    private User $user;
+    private User $idUser;
+    private User $idReceiver;
     private Penality $penality;
     private Bool $status;
-    private string $detail;
+    // private string $detail;
 
-    public function __construct (string $nameUser, string $firstname, string $libelle, float $price, $date, bool $status, string $detail)
+    public function __construct (User $idUser,User $idReceiver, Penality $penality, $date, bool $status)
     {
-        $this->user = new User ( $nameUser, $firstname);
-        $this->penality = new Penality ( $libelle, $price);
+        $this->idUser = $idUser;
+        $this->idReceiver = $idReceiver;
+        $this->penality = $penality ;
         $this->date = $date;
         $this->status = $status;
-        $this->detail = $detail;
+        // $this->detail = $detail;
     }
 
 
@@ -44,4 +46,32 @@ class Debt
     {
         return $this->detail;
     }
+
+    /**
+     * Get the value of penality
+     */ 
+    public function getPenality()
+    {
+        return $this->penality;
+    }
+
+
+    /**
+     * Get the value of idReceiver
+     */ 
+    public function getIdReceiver()
+    {
+        return $this->idReceiver;
+    }
+
+    /**
+     * Get the value of idUser
+     */ 
+    public function getIdUser()
+    {
+        return $this->idUser;
+    }
+
+
+
 }
