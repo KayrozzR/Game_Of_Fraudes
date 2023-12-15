@@ -1,5 +1,5 @@
 <?php
-/*@author Mathilde <mathilde.brx@gmail.com> */ 
+/** @author Mathilde <mathilde.brx@gmail.com> */ 
 session_start();
 
 include_once "../M/DB_Manager.class.php";

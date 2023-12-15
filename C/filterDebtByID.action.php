@@ -3,9 +3,9 @@
 session_start();
 
 include_once "../M/DB_Manager.class.php";
-include_once "../M/User.class.php";
+include_once "../M/Debt.class.php";
 
-$listUsers = DB_Manager::readUsers();
+$debtByUser = DB_Manager::filtrerDebt();
 
 
 header("Location:../V/");

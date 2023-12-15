@@ -4,7 +4,7 @@ include_once "../M/User.class.php";
 include_once "../M/Penality.class.php";
 include_once "../M/Debt.class.php";
 
-
+/*
 //création d'un nouvel utilisateur à insérer dans la base de donnée
 
 $nameUser = $_POST["Name_User"];
@@ -48,6 +48,13 @@ $listPenalities = DB_Manager::readPenalities();
 //delete line in penality table from id
 $idPenality = $_POST["ID_Penality"];
 DB_Manager::deletePenality($idPenality);
+*/
+
+
+
+$message = "You have been denounced, looser!";
+
+mail("mathilde.brx@gmail.com", "La tuile", $message);
 
 
 
