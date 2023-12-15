@@ -5,8 +5,7 @@ class Penality {
     private string $libelle;
     private float $price;
 
-    public function __construct(int $id_penality, string $libelle, float $price) {
-        $this->id_penality = $id_penality;
+    public function __construct( $libelle,  $price) {
         $this->libelle = $libelle;
         $this->price = $price;
     }

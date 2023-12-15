@@ -1,6 +1,7 @@
 <?php
 
 class User {
+    private int $idUser;
     private string $nameUser;
     private string $firstnameUser;
     private string $telUser;
@@ -10,20 +11,14 @@ class User {
 
 
     public function __construct(string $nameUser, string $firstnameUser, string $telUser, string $mailUser,string $passwordUser){
-        $this->nom = $nameUser;
-        $this->prenom = $firstnameUser;
-        $this->tel = $telUser;
-        $this->Mail = $mailUser;
-        $this->password =  password_hash($passwordUser, PASSWORD_DEFAULT);
+        $this->nameUser = $nameUser;
+        $this->firstnameUser = $firstnameUser;
+        $this->telUser = $telUser;
+        $this->mailUser = $mailUser;
+        $this->passwordUser = password_hash($passwordUser, PASSWORD_DEFAULT);
         // self :: $cpt_Denounce++;
     }
 
-    function createUser() : void {
-        $bdd = new PDO('mysql:host=localhost;dbname=game_of_fraudes;charset=utf8mb4', 'root', '');
-        $sql = "INSERT INTO user (Name_User, FirstName_User, Tel, Mail, Password) VALUES (?,?,?,?,?)";
-        $stmt= $bdd->prepare($sql);
-        $stmt->execute([$this->nom, $this->prenom, $this->tel, $this->Mail, $this->password]);
-    }
     /**
      * Get the value of nameUser
      */ 
@@ -62,6 +57,14 @@ class User {
     public function getPasswordUser()
     {
         return $this->passwordUser;
+    }
+
+    /**
+     * Get the value of idUser
+     */ 
+    public function getIdUser()
+    {
+        return $this->idUser;
     }
 }
     

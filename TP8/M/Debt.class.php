@@ -1,17 +1,19 @@
 <?php
+include_once "../M/User.class.php";
+include_once "../M/Penality.class.php";
 
 class Debt 
 {
     private string $date;
-    private User $User;
+    private User $user;
     private Penality $penality;
     private Bool $status;
     private string $detail;
 
-    function __construct (string $name, string $firstname, int $id_penality, string $libelle, float $price, $date, bool $status, string $detail)
+    public function __construct (string $nameUser, string $firstname, string $libelle, float $price, $date, bool $status, string $detail)
     {
-        $this->User = new User ( $name,  $firstname);
-        $this->penality = new Penality ($id_penality,  $libelle,$price);
+        $this->user = new User ( $nameUser, $firstname);
+        $this->penality = new Penality ( $libelle, $price);
         $this->date = $date;
         $this->status = $status;
         $this->detail = $detail;
