@@ -19,7 +19,7 @@ class DB_Manager {
 public static function createUser(User $user) : void {       
     $bdd = new PDO('mysql:host=localhost;dbname=Game_of_fraudes;charset=utf8mb4', 'root', '');
     $sql = "INSERT INTO user (NAME_USER, FIRSTNAME_USER, TEL, MAIL, PASSWORD) VALUES (?,?,?,?,?)";
-    $hashedPassword = password_hash($user->getPasswordUser(), PASSWORD_DEFAULT);
+    $hashedPassword = $user->getPasswordUser();
     $stmt= $bdd->prepare($sql);
     $stmt->execute([$user->getNameUser(),$user->getFirstnameUser(),$user->getTelUser(),$user->getMailUser(),$hashedPassword ]);
 }
@@ -35,29 +35,46 @@ public static function isBeta ($str1) {
     //>((string)str)-(bool)>
    return preg_match('/^([0-9]*)$/',$str1);
 }
+
 /** @author Simon  */
-public static function login($Inputemail, $Inputpassword) {
-    $bdd = new PDO('mysql:host=localhost;dbname=Game_of_fraudes;charset=utf8mb4', 'root', '');
-    $stmt= $bdd ->prepare("SELECT * FROM user WHERE Mail = ?");
-    $stmt->execute([$Inputemail]);
-    $user = $stmt->fetch(PDO::FETCH_ASSOC);
-
-    // Vérifier le mot de passe
-    if ($user && password_verify($Inputpassword, $user['Password'])) {
-
-        session_start();  // Démarrer la session
-
-        // Stocker des informations utiles dans la session
-        $_SESSION['user_id'] = $user['ID_User'];
-        $_SESSION['user_email'] = $user['Mail'];
-
-        // Authentification réussie
-        echo "Authentification réussie. Bienvenue, " . $user['Mail'];
-    } else {
-        // Authentification échouée
-        echo "Identifiants incorrects. Veuillez réessayer.";
+    public static function login($Inputemail, $Inputpassword) {
+        try {
+            // Établir la connexion à la base de données
+            $bdd = new PDO('mysql:host=localhost;dbname=game_of_fraudes;charset=utf8mb4', 'root', '');
+    
+            // Préparer et exécuter la requête SQL pour récupérer l'utilisateur par son adresse e-mail
+            $stmt = $bdd->prepare("SELECT * FROM user WHERE Mail = ?");
+            $stmt->execute([$Inputemail]);
+    
+            // Récupérer les données de l'utilisateur
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+            // Vérifier si l'utilisateur existe et comparer le mot de passe
+            if ($row) {
+                if (password_verify($Inputpassword, $row['Password'])) {
+                    // Démarrer la session
+                    session_start();
+    
+                    // Stocker des informations utiles dans la session
+                    $_SESSION['user_id'] = $row['ID_User'];
+                    $_SESSION['user_email'] = $row['Mail'];
+    
+                    // Authentification réussie
+                    echo "Authentification réussie. Bienvenue, " . $row['Mail'];
+                } else {
+                    // Authentification échouée
+                    echo "Mot de passe incorrect. Veuillez réessayer.";
+                }
+            } else {
+                // Utilisateur non trouvé
+                echo "Utilisateur non trouvé. Veuillez réessayer.";
+            }
+        } catch (PDOException $e) {
+            // Gérer les erreurs de la base de données
+            echo "Erreur de base de données : " . $e->getMessage();
+        }
     }
-}
+    
 
 public static function closeConnection()
 {
