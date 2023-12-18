@@ -1,3 +1,4 @@
+
 <?php
 
 ?>
@@ -8,8 +9,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Game of Fraudes - Penality</title>
-    <link rel="stylesheet" href="Penality_form.css">
+    <title>Game of Fraudes - login</title>
+    <link rel="stylesheet" href="login.css">
     <link href='https://fonts.googleapis.com/css?family=Julius Sans One' rel='stylesheet'>
 </head>
 
@@ -26,18 +27,20 @@
         <section class="lp">
 
             <div class="textcenter">
-                <p>Denounce</p>
-                <br>
-                <form action="#" method="POST" class="formPenality">
-                    <input name="denounceWho" type="text" minlength="2" maxlength="30" placeholder ="Who"  required><br>
-                    <input name="denounceWhy" type="text" minlength="2" maxlength="30" placeholder="Why" required /><br>
-                    <textarea name="denounceDetails"   id="denounceDetails" placeholder="Details" rows="4" required></textarea>
+                <p>Sign In</p><br>
+
+
+                <form action="#" method="post" class="formLogin">
+                    <input name="email" type="email" id="email" minlength="2" maxlength="30" placeholder ="email: "  required>
+                    <input name="password" type="password" id="password" minlength="2" maxlength="30" placeholder ="Password: "  required>
+                       
+
+                    <button type="submit">Connect</button>
+                        
                     
-                    <button type="submit">Denounce!</button>
                 </form>
 
             </div>
-
 
 
             <div class="lp__item stripe">
@@ -60,3 +63,4 @@
 </body>
 
 </html>
+    
