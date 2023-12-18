@@ -36,7 +36,7 @@ public static function isBeta ($str1) {
    return preg_match('/^([0-9]*)$/',$str1);
 }
 
-/** @author Simon  */
+/** @author Simon <loro-simon@live.fr> */
     public static function login($Inputemail, $Inputpassword) {
         try {
             // Établir la connexion à la base de données
@@ -74,8 +74,25 @@ public static function isBeta ($str1) {
             echo "Erreur de base de données : " . $e->getMessage();
         }
     }
-    
+ 
 
+/** @author Simon <loro-simon@live.fr> */
+// Fonction de déconnexion
+     public static function logout() {
+
+    // Détruire toutes les variables de session
+    //session_unset();
+
+    // Détruire la session
+    session_destroy();
+
+    // Rediriger vers la page de connexion (ou toute autre page de votre choix)
+    header("Location: login.php");
+    exit();
+}
+
+    
+/** @author Simon <loro-simon@live.fr> */
 public static function closeConnection()
 {
     $this->pdo = null;
@@ -167,8 +184,6 @@ public static function addCptDenounce($IDUser): void {
     $stmt->execute([$IDUser]);
 }
 
-
-/** @author Simon <simon-loro@live.fr>*/
 
 
 
