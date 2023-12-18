@@ -1,7 +1,8 @@
 <?php
-//@author Mathilde <mathilde..brx@gmail.com>
+
 class DB_Manager {
 ////////////////////////////////////////////////USER/////////////////////////////////////////////////////////////////////
+/** @author Mathilde <mathilde.brx@gmail.com>*/
 //Methode qui renvoie la liste des users
  public static function readUsers() : array {
     //driver vers la DB
@@ -13,45 +14,39 @@ class DB_Manager {
     return $listUsers;
 }
 
-
+/** @author Mathilde <mathilde.brx@gmail.com>*/
 //methode qui ajoute une personne dans la DB
 public static function createUser(User $user) : void {       
     $bdd = new PDO('mysql:host=localhost;dbname=Game_of_fraudes;charset=utf8mb4', 'root', '');
     $sql = "INSERT INTO user (NAME_USER, FIRSTNAME_USER, TEL, MAIL, PASSWORD) VALUES (?,?,?,?,?)";
     $stmt= $bdd->prepare($sql);
     $stmt->execute([$user->getNameUser(),$user->getFirstnameUser(),$user->getTelUser(),$user->getMailUser(), $user->getPasswordUser() ]);
-    }
-
+}
+/** @author Mathilde <mathilde.brx@gmail.com>*/
 //fonction qui vérifie que l'entrée ne contient que des lettres
 public static function isAlpha ($str) {
- //>((string)str)-(bool)>
-return preg_match('/^([a-zA-Zéèï]*)$/',$str);
+    //>((string)str)-(bool)>
+    return preg_match('/^([a-zA-Zéèï]*)$/',$str);
 }
+/** @author Mathilde <mathilde.brx@gmail.com>*/
 //fonction qui vérifie que l'entrée ne contient que des chiffres
 public static function isBeta ($str1) {
     //>((string)str)-(bool)>
    return preg_match('/^([0-9]*)$/',$str1);
-   }
+}
 
-
+/** @author Mathilde <mathilde.brx@gmail.com>*/
 //fonction qui supprime une ligne de la DB
 public static function deleteUser( $idUser): void {
-$bdd = new PDO('mysql:host=localhost;dbname=Game_of_fraudes;charset=utf8mb4', 'root', '');
-$sql = "DELETE FROM user WHERE ID_USER = ? ";
-$stmt= $bdd->prepare($sql);
-$stmt->execute([$idUser]);
+    $bdd = new PDO('mysql:host=localhost;dbname=Game_of_fraudes;charset=utf8mb4', 'root', '');
+    $sql = "DELETE FROM user WHERE ID_USER = ? ";
+    $stmt= $bdd->prepare($sql);
+    $stmt->execute([$idUser]);
 }
 
- /*  // fonction qui modifie une donnée de la DB
-function updateUser($nameUser, $firstnameUser, $telUser, $mailUser, $passwordUser, $idUser): void {
-$bdd = new PDO('mysql:host=localhost;dbname=Game_of_fraudes;charset=utf8mb4', 'root', '');
-$sql = "UPDATE user SET FIRSTNAME_USER = ? WHERE ID_USER = ?";
-$stmt= $bdd->prepare($sql);
-$stmt->execute([$nameUser, $firstnameUser, $telUser, $mailUser, $passwordUser, $idUser]);
-}
-*/
 
 ////////////////////////////////////////////////PENALITY/////////////////////////////////////////////////////////////////////
+/** @author Mathilde <mathilde.brx@gmail.com>*/
 //Methode qui renvoie la liste des penalities
 public static function readPenalities() : array {
     //driver vers la DB
@@ -63,7 +58,7 @@ public static function readPenalities() : array {
     return $listPenalities;
 }
 
-
+/** @author Mathilde <mathilde.brx@gmail.com>*/
 //methode qui ajoute une personne dans la DB
 public static function createPenality(Penality $penality) : void {       
     $bdd = new PDO('mysql:host=localhost;dbname=Game_of_fraudes;charset=utf8mb4', 'root', '');
@@ -72,7 +67,7 @@ public static function createPenality(Penality $penality) : void {
     $stmt->execute([$penality->getLibelle(), $penality->getPrice()]);
     }
 
-
+/** @author Mathilde <mathilde.brx@gmail.com>*/
 //fonction qui supprime une ligne de la DB
 public static function deletePenality($idPenality): void {
     $bdd = new PDO('mysql:host=localhost;dbname=Game_of_fraudes;charset=utf8mb4', 'root', '');
@@ -82,7 +77,7 @@ public static function deletePenality($idPenality): void {
     }
 
 ////////////////////////////////////////////////DEBT/////////////////////////////////////////////////////////////////////    
-
+/** @author Mathilde <mathilde.brx@gmail.com>*/
 //Methode qui renvoie la liste des debts
 public static function readDebts() : array {
     //driver vers la DB
@@ -94,26 +89,17 @@ public static function readDebts() : array {
     return $listDebts;
 }
 
-
-//methode qui ajoute une personne dans la DB
-public static function createDebt($firstnameUser, $libellePenality, $details) : void {       
-    $bdd = new PDO('mysql:host=localhost;dbname=Game_of_fraudes;charset=utf8mb4', 'root', '');
-    $sql = "INSERT INTO debt (ID_USER, LIBELLE, DETAIL) VALUES (?,?,?)";
-    $stmt= $bdd->prepare($sql);
-    $stmt->execute([$firstnameUser, $libellePenality, $details]);
-    }
-
-
+/** @author Mathilde <mathilde.brx@gmail.com>*/
 //fonction qui supprime une ligne de la DB
 public static function deleteDebt($nbDebt): void {
     $bdd = new PDO('mysql:host=localhost;dbname=Game_of_fraudes;charset=utf8mb4', 'root', '');
     $sql = "DELETE FROM debt WHERE NB_DEBT = ? ";
     $stmt= $bdd->prepare($sql);
     $stmt->execute([$nbDebt]);
-    }
+}
 
 
-
+/** @author Mathilde <mathilde.brx@gmail.com>*/
 //function qui filtre les dettes par id utilisateur
 public static function filtrerDebt() : array {
     //driver vers la DB
@@ -123,10 +109,22 @@ public static function filtrerDebt() : array {
     //rapatrie toutes les lignes de la table
     $listDebts = $stmt->fetchAll();
     return $listDebts;
-    }
 }
 
+<<<<<<< HEAD:TP8/M/DB_Manager.class.php
 
 
+=======
+/** @author Mathilde <mathilde.brx@gmail.com>*/
+//fonction qui ajoute 1 au compteur dénounce d'un user 
+public static function addCptDenounce($IDUser): void {
+    $bdd = new PDO('mysql:host=localhost;dbname=Game_of_fraudes;charset=utf8mb4', 'root', '');
+    $sql = "UPDATE user SET Cpt_Denonce = +1 WHERE ID_USER = ?";
+    $stmt= $bdd->prepare($sql);
+    $stmt->execute([$IDUser]);
+}
+
+}
+>>>>>>> cdcdf007886ac471a2d81bc211a256d95568a23f:M/DB_Manager.class.php
 
 ?>

@@ -61,4 +61,8 @@ class Register
     // Fermer la connexion à la base de données
     $pdo = null;
 }
+
+
+
+
 ?>
