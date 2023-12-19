@@ -1,6 +1,7 @@
 <?php
 
-class User {
+class User
+{
     private int $idUser;
     private string $nameUser;
     private string $firstnameUser;
@@ -10,7 +11,8 @@ class User {
     private int $cpt_Denounce;
 
 
-    public function __construct(string $nameUser, string $firstnameUser, string $telUser, string $mailUser,string $passwordUser){
+    public function __construct(string $nameUser, string $firstnameUser, string $telUser, string $mailUser, string $passwordUser)
+    {
         $this->nameUser = $nameUser;
         $this->firstnameUser = $firstnameUser;
         $this->telUser = $telUser;
@@ -21,7 +23,7 @@ class User {
 
     /**
      * Get the value of nameUser
-     */ 
+     */
     public function getNameUser()
     {
         return $this->nameUser;
@@ -29,7 +31,7 @@ class User {
 
     /**
      * Get the value of firstnameUser
-     */ 
+     */
     public function getFirstnameUser()
     {
         return $this->firstnameUser;
@@ -37,7 +39,7 @@ class User {
 
     /**
      * Get the value of telUser
-     */ 
+     */
     public function getTelUser()
     {
         return $this->telUser;
@@ -45,7 +47,7 @@ class User {
 
     /**
      * Get the value of mailUser
-     */ 
+     */
     public function getMailUser()
     {
         return $this->mailUser;
@@ -53,7 +55,7 @@ class User {
 
     /**
      * Get the value of passwordUser
-     */ 
+     */
     public function getPasswordUser()
     {
         return $this->passwordUser;
@@ -61,10 +63,9 @@ class User {
 
     /**
      * Get the value of idUser
-     */ 
+     */
     public function getIdUser()
     {
         return $this->idUser;
     }
 }
-    
