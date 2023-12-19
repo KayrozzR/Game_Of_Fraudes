@@ -30,8 +30,10 @@
                 <p>Sign In</p><br>
 
 
-                <form action="#" method="post" class="formLogin">
-                    <input name="email" type="email" id="email" minlength="2" maxlength="30" placeholder ="email: "  required>
+                <form action="..\C\login.action.php" method="post" class="formLogin">
+                    <label for="email">email: </label>
+                    <input name="email" type="email" id="email" minlength="2" maxlength="30"   required>
+                    <label for="Password">Password: </label>
                     <input name="password" type="password" id="password" minlength="2" maxlength="30" placeholder ="Password: "  required>
                        
 
@@ -64,3 +66,4 @@
 
 </html>
     
+

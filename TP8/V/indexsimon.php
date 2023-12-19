@@ -1,3 +1,6 @@
+<?php session_start(); ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,9 +11,9 @@
 </head>
 <body>
     <h2>Inscription</h2>
-    <form action="..\C\Register.Controller.php" method="post">
-        <label for="email">Email:</label>
-        <input type="email" name="email" required><br>
+    <form action="..\C\login.action.php" method="post">
+        <label for="Mail">Email:</label>
+        <input type="Mail" name="Mail" required><br>
 
         <label for="password">Mot de passe:</label>
         <input type="password" name="password" required><br>

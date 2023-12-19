@@ -1,3 +1,4 @@
+
 <?php
 
 ?>
@@ -8,8 +9,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Game of Fraudes - Penality</title>
-    <link rel="stylesheet" href="Penality_form.css">
+    <title>Game of Fraudes - Profil </title>
+    <link rel="stylesheet" href="Profil.css">
     <link href='https://fonts.googleapis.com/css?family=Julius Sans One' rel='stylesheet'>
 </head>
 
@@ -26,23 +27,28 @@
         <section class="lp">
 
             <div class="textcenter">
-                <p>Denounce</p>
-                <br>
-                <form action="#" method="POST" class="formPenality">
-                    <label for="denounceWho">Who: </label>
-                    <input name="denounceWho" type="text" minlength="2" maxlength="30"  required><br>
+                
+                <h1>Profile</h1>
+                <form action="#" method="POST" class="formRegister">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
 
-                    <label for="denounceWhy">Why: </label>
-                    <input name="denounceWhy" type="text" minlength="2" maxlength="30" required /><br>
+                    <label for="firstname">Firstname:</label>
+                    <input type="text" id="firstname" name="firstname" required>
 
-                    <textarea name="denounceDetails"   id="denounceDetails" placeholder="Details" rows="4" required></textarea>
-                    
-                    <button type="submit">Denounce!</button>
+                    <label for="mail">Mail:</label>
+                    <input type="email" id="mail" name="mail" required>
+
+                    <label for="tel">Tel:</label>
+                    <input type="tel" id="tel" name="tel" required>
+
+                    <button type="submit" id="modify-btn">Modify</button>
+                    <a href="#" id="disconnect-btn">Disconnect</a>
                 </form>
-
+                
             </div>
 
-
+           
 
             <div class="lp__item stripe">
                 <a href="gestionPenality.php" class="stripe__item">

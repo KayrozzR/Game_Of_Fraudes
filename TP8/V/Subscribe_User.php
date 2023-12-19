@@ -9,7 +9,7 @@
 </head>
 <body>
  
-    <form method="POST" action="../C/test.action.php">
+    <form method="POST" action="../C/register.action.php">
         <input type="Name_User" placeholder="Nom" name="Name_User"><br>
         <input type="FirstName_User" placeholder="Prenom" name="FirstName_User"><br>
         <input type="Mail" placeholder="Mail" name="Mail"><br>
@@ -20,7 +20,7 @@
  
     <hr>
  
-    <form method="POST" action="login.php">
+    <form method="POST" action="../C/login.action.php">
         <input type="Mail" placeholder="Mail" name="Mail"><br>
         <input type="password" placeholder="Mot de passe" name="password"><br>
         <button type="submit">Connexion</button>
