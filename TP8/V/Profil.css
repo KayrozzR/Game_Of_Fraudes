@@ -59,7 +59,7 @@ a {
   }
   
   /*TEXT*/
-  .formRegister {
+  .formProfil {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -68,7 +68,7 @@ a {
     padding: 3rem;
     border-radius: 10px;
   }
-  .formRegister input {
+  .formProfil input {
     width: 25rem;
     height: 2rem;
     border-radius: 10px;

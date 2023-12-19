@@ -29,7 +29,7 @@
             <div class="textcenter">
                 
                 <h1>Profile</h1>
-                <form action="#" method="POST" class="formRegister">
+                <form action="#" method="POST" class="formProfil">
                     <label for="name">Name:</label>
                     <input type="text" id="name" name="name" required>
 
