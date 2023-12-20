@@ -174,10 +174,6 @@ public static function filtrerDebt() : array {
     return $listDebts;
 }
 
-<<<<<<< HEAD:TP8/M/DB_Manager.class.php
-
-
-=======
 /** @author Mathilde <mathilde.brx@gmail.com>*/
 //fonction qui ajoute 1 au compteur dénounce d'un user 
 public static function addCptDenounce($IDUser): void {
@@ -193,6 +189,5 @@ public static function addCptDenounce($IDUser): void {
 
 
 }
->>>>>>> cdcdf007886ac471a2d81bc211a256d95568a23f:M/DB_Manager.class.php
 
 ?>

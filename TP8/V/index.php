@@ -44,7 +44,7 @@
         <a href="historicDebt.php" class="stripe__item">
           <p class="text_slide"> Debt Historique </p>
         </a>
-        <a href="userList.php" class="stripe__item">
+        <a href="../C/readUser.action.php" class="stripe__item">
           <p class="text_slide"> User List </p>
         </a>
         <a href="penalityForm.php" class="stripe__item">
