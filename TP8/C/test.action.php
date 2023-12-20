@@ -39,8 +39,7 @@ $penality1 = new Penality ($libelle, $price);
 print_r($penality1);
 DB_Manager::createPenality($penality1);
 
- //read penality table
-$listPenalities = DB_Manager::readPenalities();
+
 
 
 
@@ -51,6 +50,8 @@ DB_Manager::deletePenality($idPenality);
 */
 
 
+ //read penality table
+$listPenalities = DB_Manager::readPenalities();
 
 
 

@@ -1,5 +1,7 @@
 <?php
 
+/** @author Mathilde */
+session_start();
 ?>
 
 <!DOCTYPE html>
@@ -37,14 +39,14 @@
 
 
       <div class="lp__item stripe">
-        <a href="gestionPenality.php" class="stripe__item">
+        <a href="../C/readPenality.action.php" class="stripe__item">
           <p class="text_slide"> Penalities Tab </p>
         </a>
-        <a href="historicDebt.php" class="stripe__item">
+        <a href="../C/readDebt.action.php" class="stripe__item">
           <p class="text_slide"> Debt Historique </p>
         </a>
-        <a href="../C/readUser.action.php" class="stripe__item">
-          <p class="text_slide"> User List </p>
+        <a href="../C/readUserList.php" class="stripe__item">
+          <p class="text_slide">User List </p>
         </a>
         <a href="penalityForm.php" class="stripe__item">
           <p class="text_slide"> Denounce </p>

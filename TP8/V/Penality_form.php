@@ -1,5 +1,6 @@
 <?php
-
+/** @author Tina */
+session_start ();
 ?>
 
 <!DOCTYPE html>

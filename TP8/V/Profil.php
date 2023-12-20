@@ -1,5 +1,7 @@
 
 <?php
+/** @author Tina */
+session_start();
 
 ?>
 
@@ -48,7 +50,8 @@
                 
             </div>
 
-           
+
+        
 
             <div class="lp__item stripe">
                 <a href="gestionPenality.php" class="stripe__item">
