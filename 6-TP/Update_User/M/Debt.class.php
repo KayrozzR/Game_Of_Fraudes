@@ -1,4 +1,5 @@
 <?php
+
 include_once "../M/User.class.php";
 include_once "../M/Penality.class.php";
 
@@ -21,6 +22,7 @@ class Debt
         $this->status = $status;
         // $this->detail = $detail;
     }
+
 
 
     /**

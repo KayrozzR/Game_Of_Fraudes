@@ -174,6 +174,26 @@ public static function createDebt($debt) : void {
     $stmt->execute([$debt->getDate(),$debt->getStatus(),$debt->getIdReceiver()->getIdUser(),$debt->getIdUser()->getIdUser(),$debt->getPenality()->getIdPenality()]); 
     }
 
+    public static function readUser($firstnameUser) : array {
+        //driver vers la DB
+        $bdd = new PDO('mysql:host=localhost;dbname=Game_of_fraudes;charset=utf8mb4', 'root', '');
+        $stmt = $bdd->prepare("SELECT * FROM `user` WHERE Firstname_User = ?;");
+        $stmt->execute($firstnameUser);
+        //rapatrie toutes les lignes de la table
+        $listUsers = $stmt->fetchAll();
+        return $listUsers;
+    }
+
+    public static function readPenalitie($libelle) : array {
+        //driver vers la DB
+        $bdd = new PDO('mysql:host=localhost;dbname=Game_of_fraudes;charset=utf8mb4', 'root', '');
+        $stmt = $bdd->prepare("SELECT * FROM `penality` WHERE Libelle = ?; ");
+        $stmt->execute($libelle);
+        //rapatrie toutes les lignes de la table
+        $listPenalities = $stmt->fetchAll();
+        return $listPenalities;
+    }
+
 }
 
 
