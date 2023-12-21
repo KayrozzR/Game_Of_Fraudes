@@ -1,4 +1,4 @@
-/** @author Tina */
+/** @author Mathilde */
 a {
   text-decoration: none;
 }
@@ -21,8 +21,7 @@ body {
   color: rgb(0, 0, 0);
   font-family: "Julius Sans One";
   border-color: #f2cc45;
-  margin-left: 40rem;
-  
+  margin-left: 41rem;
 }
 /*EXTEND*/
 .stripe {
@@ -47,8 +46,13 @@ nav {
   left: 48px;
   top: 32px;
 }
+.login a {
+  color: #444;
+  text-decoration: none;
+  margin: 0 40px 0 0;
+}
 
-
+/*LP*/
 .lp {
   margin-top: 100px;
   height: 100%;
@@ -56,32 +60,23 @@ nav {
   flex-direction: row;
 }
 
-
+/*TEXT*/
 .table-wrapper {
-  
-  box-shadow: 0px 35px 20px rgba(0, 0, 0, 0.2);
-  border-radius: 30px;
-  background-color: #eb7d3e;
-  padding-top: 1rem;
-  padding-left: 1rem;
-  padding-bottom: 1rem;
-  padding-right: 1rem;
-  border-radius: 25px;
+  margin: 2rem;
+  box-shadow: 0px 35px 50px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
 }
 
 .fl-table {
   border-radius: 5px;
   font-size: 15px;
   font-weight: normal;
-  
+  border: none;
   border-collapse: collapse;
   width: 100%;
   max-width: 100%;
-  
-  background-color: rgb(255, 255, 255);
-  margin-top: 10px;
-  margin-right: 100px;
-  
+  white-space: nowrap;
+  background-color: white;
 }
 
 .fl-table button {
@@ -127,7 +122,32 @@ nav {
   box-shadow: 0px 35px 50px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
 }
-
+.formRegister {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+.formRegister input {
+  width: 10rem;
+  height: 2rem;
+  border-radius: 10px;
+  margin-top: 2rem;
+  margin-left: 1rem;
+  font-family: "Julius Sans One";
+  font-size: 12px;
+}
+.formRegister button {
+  width: 10rem;
+  height: 2rem;
+  border-radius: 10px;
+  margin-top: 2rem;
+  font-family: "Julius Sans One";
+  background-color: #853ff9;
+  color: #f8f8f8;
+  margin-left: 2rem;
+}
 
 .textcenter p {
   font-size: 45px;
@@ -135,13 +155,21 @@ nav {
   margin: 24px 50px 24px 0;
   text-align: center;
 }
-
+.textcenter a {
+  font-size: 45px;
+  padding-top: 1rem;
+  padding-left: 10rem;
+  padding-bottom: 1rem;
+  padding-right: 10rem;
+  border-radius: 25px;
+  color: blanchedalmond;
+}
 
 .textcenter {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-right: 10rem;
+  margin-right: 22rem;
   margin-top: 1rem;
 }
 
@@ -158,12 +186,6 @@ h1 {
   margin: 24px 40px 24px 0;
   text-align: center;
 }
-.table-wrapper {
-  position: relative;
-  background: #eb7d3e;
-}
-
-
 
 /*STRIPE*/
 .stripe {
