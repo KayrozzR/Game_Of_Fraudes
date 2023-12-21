@@ -28,48 +28,56 @@ session_start();
         </form>
 
         <section class="lp">
+            <div class="textcenter">
+                <p>users </p>
+        
+                <div class="table-wrapper">
 
 
-            <div class="table-wrapper">
-                <table class="fl-table">
-                    <thead>
+                    <table class="fl-table">
+                        <thead>
+                            <tr>
+                                <th>FirstName</th>
+                                <th>Name</th>
+                                <th>Mail</th>
+                                <th>CPT</th>
+                                <th>Delete</th>
+                                
+                            </tr>
+                        </thead>
+
                         <tr>
-                            <th>FirstName</th>
-                            <th>Name</th>
-                            <th>Mail</th>
-                            <th>CPT</th>
+            
+
+                            <?php foreach ($_SESSION["user"] as $key) {
+                                        
+
+                            ?>
+                            <td><?php echo $key['Firstname_User']; ?></td>
+                            <td><?php echo $key['Name_User']; ?></td>
+                            <td><?php echo $key['Mail']; ?></td>
+                            <td><?php echo $key['Cpt_Denonce']; ?></td>
+
+                            <td>
+                                <form action="..\C\deleteUser.action.php" method="POST">
+                                    <button name="ID_User" value="<?php echo $key['ID_User']; ?>">DELETE</button>
+                                </form>
+                            </td>
+
                         </tr>
-                    </thead>
 
-                    <tr>
-          
 
-                        <?php foreach ($_SESSION["user"] as $key) {
-                                    
+                        <?php
+                        }
 
                         ?>
-                        <td><?php echo $key['Firstname_User']; ?></td>
-                        <td><?php echo $key['Name_User']; ?></td>
-                        <td><?php echo $key['Mail']; ?></td>
-                        <td><?php echo $key['Cpt_Denonce']; ?></td>
-
-                        <td>
-                            <form action="..\C\deleteUser.action.php" method="POST">
-                                <button name="ID_User" value="<?php echo $key['ID_User']; ?>">DELETE</button>
-                            </form>
-                        </td>
-
-                    </tr>
+                    </table>
 
 
-                    <?php
-                    }
-
-                    ?>
-                </table>
                     
+                        
+                </div>
             </div>
-
 
 
             <div class="lp__item stripe">

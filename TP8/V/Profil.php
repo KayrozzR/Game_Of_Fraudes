@@ -12,7 +12,7 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Game of Fraudes - Profil </title>
-    <link rel="stylesheet" href="Profil.css">
+    <link rel="stylesheet" href="profil.css">
     <link href='https://fonts.googleapis.com/css?family=Julius Sans One' rel='stylesheet'>
 </head>
 
@@ -22,7 +22,7 @@ session_start();
             <h1>Game of<br> Fraudes</h1>
         </nav>
 
-        <form action="profil.php" method="POST">
+        <form action="profil.php" method="POST" class="profilButton">
             <button type="submit">PROFIL</button>
         </form>
 
@@ -30,7 +30,7 @@ session_start();
 
             <div class="textcenter">
                 
-                <h1>Profile</h1>
+                <p>Profil</p>
                 <form action="#" method="POST" class="formProfil">
                     <label for="name">Name:</label>
                     <input type="text" id="name" name="name" required>
@@ -43,9 +43,13 @@ session_start();
 
                     <label for="tel">Tel:</label>
                     <input type="tel" id="tel" name="tel" required>
+                    <div class="button-group">
+                        <li><a href="#" id="disconnect-btn">Disconnect</a></li> 
+                        <li><button type="submit" id="modify-btn">Modify</button></li>
+                    </div>
 
-                    <button type="submit" id="modify-btn">Modify</button>
-                    <a href="#" id="disconnect-btn">Disconnect</a>
+                   
+                    
                 </form>
                 
             </div>

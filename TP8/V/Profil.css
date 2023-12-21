@@ -39,17 +39,30 @@ a {
     align-items: center;
     align-self: center;
   }
+  .profilButton button {
+    display: flex;
+    position: relative;
+    margin-top: 1rem;
+    background-color: #f2cc45;
+    font-size: 25px;
+    padding-top: 1rem;
+    padding-left: 2rem;
+    padding-bottom: 1rem;
+    padding-right: 2rem;
+    border-radius: 25px;
+    color: rgb(0, 0, 0);
+    font-family: "Julius Sans One";
+    border-color: #f2cc45;
+    margin-left: 60rem;
+    
+  }
   
   nav {
     position: absolute;
     left: 48px;
     top: 32px;
   }
-  .login a {
-    color: #444;
-    text-decoration: none;
-    margin: 0 40px 0 0;
-  }
+ 
   
   /*LP*/
   .lp {
@@ -66,27 +79,26 @@ a {
     align-items: center;
     background-color: #eb7d3e;
     margin: 1rem;
-    padding: 3rem;
+    padding: 1rem;
     border-radius: 10px;
+    margin-left: 50%;
+    
   }
+  
   .formProfil input {
     width: 25rem;
     height: 2rem;
     border-radius: 10px;
     border-color: #eb7d3e;
-    font-family: "Julius Sans One";
+    font-family: "Julius Sans One";                    
   }
 
   
   .lp button {
-    margin-top: 2rem;
-    margin-left: 6rem;
+    margin-top: 1rem;
+    margin-left: 1rem;
     background-color: #853FF9;
     font-size: 25px;
-    padding-top: 1rem;
-    padding-left: 5rem;
-    padding-bottom: 1rem;
-    padding-right: 5rem;
     border-radius: 25px;
     color: blanchedalmond;
     font-family: "Julius Sans One";
@@ -99,14 +111,31 @@ a {
     color: #444;
     margin: 24px 50px 24px 0;
     text-align: center;
+    margin-left: 50%;
   }
-  .textcenter a {
-    background-color: #eb7d3e;
+  .button-group {
+    
+    display: flex;
+    justify-content: center;
+    margin: 30px;
+    font-size: 12px;
+    
+  }
+  .button-group li{
+    list-style-type: none;
+    padding: 15px;
+    margin: 15px;
+    display: flex;
+    
+    border-radius: 10px;
+}
+  .button-group a {
+    background: #e15046;
     font-size: 45px;
     padding-top: 1rem;
-    padding-left: 10rem;
+    padding-left: 1rem;
     padding-bottom: 1rem;
-    padding-right: 10rem;
+    padding-right: 1rem;
     border-radius: 25px;
     color: blanchedalmond;
   }
@@ -115,8 +144,9 @@ a {
     display: flex;
     flex-direction: column;
     align-items: center;
-margin-right: 22rem;
-margin-top:  1rem;
+    margin-right: 17rem;
+    margin-top:  1rem;
+    margin-left: 10%;
 
   }
   

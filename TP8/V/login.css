@@ -67,7 +67,8 @@ a {
     background-color: #eb7d3e;
     margin: 1rem;
     padding: 3rem;
-    border-radius: 10px;
+    border-radius: 25px;
+    margin-left: 30%;
   }
   .formLogin input {
     width: 25rem;
