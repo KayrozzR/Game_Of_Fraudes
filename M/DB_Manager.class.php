@@ -36,6 +36,18 @@ public static function isBeta ($str1) {
    return preg_match('/^([0-9]*)$/',$str1);
 }
 
+/** @author Mathilde <mathilde.brx@gmail.com>*/
+//fonction qui supprime une ligne de la DB
+public static function deleteUser( $idUser): void {
+    $bdd = new PDO('mysql:host=localhost;dbname=Game_of_fraudes;charset=utf8mb4', 'root', '');
+    $sql = "DELETE FROM user WHERE ID_USER = ? ";
+    $stmt= $bdd->prepare($sql);
+    $stmt->execute([$idUser]);
+}
+
+
+
+////////////////////////////////////////LOGIN/LOGOUT/////////////////////////////////////////////////////////////////////
 /** @author Simon <loro-simon@live.fr> */
     public static function login($Inputemail, $Inputpassword) {
         try {
@@ -57,10 +69,10 @@ public static function isBeta ($str1) {
     
                     // Stocker des informations utiles dans la session
                     $_SESSION['user_id'] = $row['ID_User'];
-                    $_SESSION['user_email'] = $row['Mail'];
+                    $_SESSION['user_Firstname'] = $row['Firstname_User'];
     
                     // Authentification réussie
-                    echo "Authentification réussie. Bienvenue, " . $row['Mail'];
+                    echo "Authentification réussie. Bienvenue, " . $row['Firstname_User'];
                 } else {
                     // Authentification échouée
                     echo "Mot de passe incorrect. Veuillez réessayer.";
@@ -79,17 +91,19 @@ public static function isBeta ($str1) {
 /** @author Simon <loro-simon@live.fr> */
 // Fonction de déconnexion
      public static function logout() {
-
-    // Détruire toutes les variables de session
-    //session_unset();
-
-    // Détruire la session
-    session_destroy();
-
-    // Rediriger vers la page de connexion (ou toute autre page de votre choix)
-    header("Location: login.php");
-    exit();
-}
+        session_start();
+        $isConnected = isset($_SESSION['user_id']) && !empty($_SESSION['user_id']);
+        
+        // Si le bouton de déconnexion est cliqué, déconnectez l'utilisateur
+        if (isset($_POST['logout'])) {
+            // Vérifiez si la session est active avant de la détruire
+            if (session_status() == PHP_SESSION_ACTIVE) {
+                session_unset();
+                session_destroy();
+            }
+            header("Location: ..\V\status.php");
+            exit();
+        }}
 
     
 /** @author Simon <loro-simon@live.fr> */
@@ -97,16 +111,6 @@ public static function closeConnection()
 {
     $this->pdo = null;
 }
-
-/** @author Mathilde <mathilde.brx@gmail.com>*/
-//fonction qui supprime une ligne de la DB
-public static function deleteUser( $idUser): void {
-    $bdd = new PDO('mysql:host=localhost;dbname=Game_of_fraudes;charset=utf8mb4', 'root', '');
-    $sql = "DELETE FROM user WHERE ID_USER = ? ";
-    $stmt= $bdd->prepare($sql);
-    $stmt->execute([$idUser]);
-}
-
 
 ////////////////////////////////////////////////PENALITY/////////////////////////////////////////////////////////////////////
 /** @author Mathilde <mathilde.brx@gmail.com>*/

@@ -41,6 +41,26 @@ button {
     cursor: pointer;
 }
 
-button:hover {
-    background-color: #45a049;
+.color-changing-btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.connected {
+    background-color: #4CAF50; /* Couleur lorsque connecté */
+    color: #fff; /* Couleur du texte lorsque connecté */
+}
+
+.not-connected {
+    background-color: #f44336; /* Couleur lorsque non connecté */
+    color: #fff; /* Couleur du texte lorsque non connecté */
+}
+
+.logout-btn {
+    padding: 10px;
+    margin-left: 10px;
+    background-color: #f44336; /* Couleur du bouton de déconnexion */
+    color: #fff; /* Couleur du texte du bouton de déconnexion */
+    cursor: pointer;
 }
