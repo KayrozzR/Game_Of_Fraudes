@@ -8,4 +8,4 @@ include_once "../M/User.class.php";
 $_SESSION["userList"] = DB_Manager::readUsers();
 
 
-header("Location:../V/Update_User.php/");
+header("Location:../V/usersList.php");

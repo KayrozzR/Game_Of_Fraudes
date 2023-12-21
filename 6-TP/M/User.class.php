@@ -23,7 +23,7 @@ class User {
 
     /**
      * Get the value of nameUser
-     */ 
+     */
     public function getNameUser()
     {
         return $this->nameUser;
@@ -31,7 +31,7 @@ class User {
 
     /**
      * Get the value of firstnameUser
-     */ 
+     */
     public function getFirstnameUser()
     {
         return $this->firstnameUser;
@@ -39,7 +39,7 @@ class User {
 
     /**
      * Get the value of telUser
-     */ 
+     */
     public function getTelUser()
     {
         return $this->telUser;
@@ -47,7 +47,7 @@ class User {
 
     /**
      * Get the value of mailUser
-     */ 
+     */
     public function getMailUser()
     {
         return $this->mailUser;
@@ -55,7 +55,7 @@ class User {
 
     /**
      * Get the value of passwordUser
-     */ 
+     */
     public function getPasswordUser()
     {
         return $this->passwordUser;
@@ -63,10 +63,9 @@ class User {
 
     /**
      * Get the value of idUser
-     */ 
+     */
     public function getIdUser()
     {
         return $this->idUser;
     }
 }
-    
