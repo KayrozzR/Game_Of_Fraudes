@@ -12,7 +12,7 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Game of Fraudes - Users List</title>
-    <link rel="stylesheet" href="usersList.css">
+    <link rel="stylesheet" href="style.css">
     <link href='https://fonts.googleapis.com/css?family=Julius Sans One' rel='stylesheet'>
 </head>
 
@@ -52,7 +52,6 @@ session_start();
                                    foreach ($_SESSION["user"] as $key) {
         ?>
 
-                            ?>
                             <td><?php echo $key['Firstname_User']; ?></td>
                             <td><?php echo $key['Name_User']; ?></td>
                             <td><?php echo $key['Mail']; ?></td>
