@@ -2,6 +2,18 @@
 
 /** @author Mathilde */
 session_start();
+
+$isConnected = isset($_SESSION['user_id']) && !empty($_SESSION['user_id']);
+
+if (isset($_SESSION['user_id'])) {
+    // L'utilisateur est connecté
+    $user_id = $_SESSION['user_id'];
+    $user_firstname = $_SESSION['user_Firstname'];
+    $status_message = "$user_firstname";
+} else {
+    // L'utilisateur n'est pas connecté
+    $status_message = "Vous n'êtes pas connecté.";
+}
 ?>
 
 <!DOCTYPE html>
@@ -23,7 +35,7 @@ session_start();
    </nav>
     <div>
      <ul class="nav navbar-nav navbar-nav-first">
-       <a href="profil.php" class="profilButton" >PROFIL: </a>
+       <a href="profil.php" class="profilButton" >PROFIL: <?php echo $status_message; ?> </a>
         </ul>
     </div>
 

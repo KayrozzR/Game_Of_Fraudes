@@ -225,6 +225,7 @@ public static function login($Inputemail, $Inputpassword) {
                 $_SESSION['user_Firstname'] = $row['Firstname_User'];
 
                 // Authentification réussie
+                $isConnected = isset($_SESSION['user_id']) && !empty($_SESSION['user_id']);
                 $_SESSION["loggedin"] = true;
                 echo "Authentification réussie. Bienvenue, " . $row['Firstname_User'];
 
@@ -248,7 +249,6 @@ public static function login($Inputemail, $Inputpassword) {
 // Fonction de déconnexion
  public static function logout() {
     session_start();
-    $isConnected = isset($_SESSION['user_id']) && !empty($_SESSION['user_id']);
     
     // Si le bouton de déconnexion est cliqué, déconnectez l'utilisateur
     if (isset($_POST['logout'])) {

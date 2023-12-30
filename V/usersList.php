@@ -9,6 +9,18 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     header("location: login.php");
     exit;
 }
+
+$isConnected = isset($_SESSION['user_id']) && !empty($_SESSION['user_id']);
+
+if (isset($_SESSION['user_id'])) {
+    // L'utilisateur est connecté
+    $user_id = $_SESSION['user_id'];
+    $user_firstname = $_SESSION['user_Firstname'];
+    $status_message = "$user_firstname";
+} else {
+    // L'utilisateur n'est pas connecté
+    $status_message = "Vous n'êtes pas connecté.";
+}
 ?>
 
 <!DOCTYPE html>
@@ -29,7 +41,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
    </nav>
     <div>
      <ul class="nav navbar-nav navbar-nav-first">
-       <a href="profil.php" class=profilButton>PROFIL</a>
+     <a href="profil.php" class="profilButton" >PROFIL: <?php echo $status_message; ?> </a>
         </ul>
     </div>
 
@@ -51,29 +63,24 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                         </thead>
 
                         <tr>
-            
-
                             <?php if(isset($_SESSION["userList"]) && !empty($_SESSION["userList"])) {
                                    foreach ($_SESSION["userList"] as $key) {
-        ?>
+                            ?>
 
                             <td><?php echo $key['Firstname_User']; ?></td>
                             <td><?php echo $key['Name_User']; ?></td>
                             <td><?php echo $key['Mail']; ?></td>
                             <td>Cpt_Denonce</td>
-
-                            <td>
-                                <form action="..\C\deleteUser.action.php" method="POST">
-                                    <button name="ID_User" value="<?php echo $key['ID_User']; ?>">DELETE</button>
+                            <td><form action="..\C\deleteUser.action.php" method="POST">
+                                <button name="ID_User" value="<?php echo $key['ID_User']; ?>">DELETE</button>
                                 </form>
                             </td>
-
                         </tr>
-
 
                         <?php
                         }}
                         ?>
+
                     </table>   
                 </div>
             </div>
