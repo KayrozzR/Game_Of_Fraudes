@@ -223,14 +223,15 @@ public static function login($Inputemail, $Inputpassword) {
                 // Stocker des informations utiles dans la session
                 $_SESSION['user_id'] = $row['ID_User'];
                 $_SESSION['user_Firstname'] = $row['Firstname_User'];
+                $_SESSION['user_Name'] = $row['Name_User'];
 
                 // Authentification réussie
                 $isConnected = isset($_SESSION['user_id']) && !empty($_SESSION['user_id']);
                 $_SESSION["loggedin"] = true;
                 echo "Authentification réussie. Bienvenue, " . $row['Firstname_User'];
 
+                header("Location: ..\V\penalityForm.php");
                 
-
             } else {
                 // Authentification échouée
                 echo "Mot de passe incorrect. Veuillez réessayer.";
@@ -249,7 +250,7 @@ public static function login($Inputemail, $Inputpassword) {
 // Fonction de déconnexion
  public static function logout() {
     session_start();
-    
+
     // Si le bouton de déconnexion est cliqué, déconnectez l'utilisateur
     if (isset($_POST['logout'])) {
         // Vérifiez si la session est active avant de la détruire
@@ -257,7 +258,7 @@ public static function login($Inputemail, $Inputpassword) {
             session_unset();
             session_destroy();
         }
-        header("Location: ..\V\status.php");
+        header("Location: ..\V\index.php");
         exit();
     }}
 

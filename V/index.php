@@ -41,12 +41,18 @@ if (isset($_SESSION['user_id'])) {
 
     <section class="lp">
       <div class="lp__item text">
-        <div class="textcenter">
-          <p>Welcome to the Game of Fraudes</p>
+        <div class="textcenterH">
+          <h2>Welcome to the Game of Fraudes</h2>
+
           <br>
           <form action="login.php" method="POST">
             <button>LOGIN</button>
           </form>
+          <br>
+          <form action="register.php" method="POST">
+            <button>Register</button>
+          </form>
+
         </div>
       </div>
 

@@ -1,6 +1,7 @@
-<?php
 
-/** @author Mathilde */
+<?php
+/** @author Tina, Mathilde */
+
 session_start();
 
 // Vérifiez si l'utilisateur est connecté
@@ -22,22 +23,20 @@ if (isset($_SESSION['user_id'])) {
 }
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Game of Fraudes - Gestion of Penalities</title>
+    <title>Game of Fraudes - Users List</title>
     <link rel="stylesheet" href="style.css">
     <link href='https://fonts.googleapis.com/css?family=Julius Sans One' rel='stylesheet'>
 </head>
 
-<body>   
+<body>
     <div class="pageIndex">
-        
-     <nav>   
+    <nav>   
      <h1> <a href="index.php">Game of<br> Fraudes </a></h1>
    </nav>
     <div>
@@ -46,56 +45,43 @@ if (isset($_SESSION['user_id'])) {
         </ul>
     </div>
 
-
         <section class="lp">
-
             <div class="textcenter">
-                <p>Penalities</p>
-                <br>
-                <div class="TabPenality">
-
-                    <div class="table-wrapper">
-                        <table class="fl-table">
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Libelle</th>
-                                    <th>Price</th>
-                                    <th>Delete</th>
-                                </tr>
-                            </thead>
+                <p>Historique</p>
+        
+                <div class="table-wrapper">
+                    <table class="fl-table">
+                        <thead>
                             <tr>
-                                <?php foreach ($_SESSION["penality"] as $key) {
-
-                                ?>
-                                    <td><?php echo $key['ID_Penality']; ?></td>
-                                    <td><?php echo $key['Libelle']; ?></td>
-                                    <td><?php echo $key['Price']; ?></td>
-
-
-                                    <td>
-                                        <form action="..\C\deletePenality.action.php" method="POST">
-                                            <button name="ID_Penality" value="<?php echo $key['ID_Penality']; ?>">DELETE</button>
-                                        </form>
-                                    </td>
-
+                                <th>FirstName</th>
+                                <th>Victime</th>
+                                <th>Why?</th>
+                                <th>Value</th>
+                                <th>When?</th>
                             </tr>
+                        </thead>
+
+                        <tr>
+                            <?php if(isset($_SESSION["userList"]) && !empty($_SESSION["userList"])) {
+                                   foreach ($_SESSION["userList"] as $key) {
+                            ?>
+
+                            <td><?php echo $key['Firstname_User']; ?><?php echo $key['Name_User']; ?></td>
+                            <td></td>
+                            <td>Cause</td>
+                            <td>0€</td>
+                            <td>00/00/0000</td>
+                                </form>
+                            </td>
+                        </tr>
+
                         <?php
-                                }
-
+                        }}
                         ?>
-                        </table>
-                    </div>
-                    <form action="../C/createPenality.action.php" method="POST" class="formRegister">
-                        <input name="Libelle" type="text" placeholder="Libelle of the punition" required /><br>
-                        <input name="Price" type="text" placeholder="Price of the punition" required /><br>
-                        <button>Submit</button>
-                    </form>
 
+                    </table>   
                 </div>
             </div>
-
-
 
             <div class="lp__item stripe">
                 <a href="../C/readPenality.action.php" class="stripe__item">
@@ -118,3 +104,5 @@ if (isset($_SESSION['user_id'])) {
 </body>
 
 </html>
+
+

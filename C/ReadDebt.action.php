@@ -7,5 +7,5 @@ include_once '../M/Debt.class.php';
 
 $_SESSION["debt"] = DB_Manager::readDebts();
 
-header("Location:../V/");
+header("Location:../V/debtHistorique.php");
 ?>

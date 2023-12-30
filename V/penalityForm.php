@@ -57,13 +57,14 @@ if (isset($_SESSION['user_id'])) {
                         <option value ="">Select a firstname</option>
                         <?php foreach ($_SESSION ["userList"] as $key) :?> 
                             <option value="<?php echo $key ["Firstname_User"] ?>">
-                                <?php echo $key ["Firstname_User"] ?>
+                                <?php echo $key ["Firstname_User"]." ".$key ["Name_User"] ?>
                             </option>
                         <?php endforeach ?>
                     </select>
-                     
+                     <br>
                     <label for="denounceWhy">Why: </label>                
                     <select name = "Libelle" placeholder = "Libelle">
+                      <br>
                         <option value ="">Select a label</option>
                         <?php foreach ($_SESSION ["penality"] as $key) :?> 
                             <option value="<?php echo $key ["Libelle"] ?>">
@@ -71,7 +72,9 @@ if (isset($_SESSION['user_id'])) {
                             </option>
                         <?php endforeach ?>
                     </select>
+                    <br>
                     <textarea name="Detail"   id="Detail" placeholder="Detail" rows="4" required></textarea>
+                    <br>
                     <button type="submit">Denounce!</button>
                 </form>
             </div>

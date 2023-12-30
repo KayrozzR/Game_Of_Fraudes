@@ -14,6 +14,7 @@ if (isset($_SESSION['user_id'])) {
     // L'utilisateur est connecté
     $user_id = $_SESSION['user_id'];
     $user_firstname = $_SESSION['user_Firstname'];
+    $user_name = $_SESSION['user_Name'];
     $status_message = "$user_firstname";
 } else {
     // L'utilisateur n'est pas connecté
@@ -49,11 +50,10 @@ if (isset($_SESSION['user_id'])) {
                 
                 <p>Profil</p>
                 <form action="#" method="POST" class="formProfil">
-                    <label for="name">Name:</label>
-                    <input type="text" id="name" name="name" required>
-
-                    <label for="firstname">Firstname:</label>
-                    <input type="text" id="firstname" name="firstname" required>
+                    <label for="name">Name: <?php echo $user_name; ?></label>
+                    <br>
+                    <label for="firstname">Firstname: <?php echo $user_firstname; ?></label>
+                    <br>
 
                     <label for="mail">Mail:</label>
                     <input type="email" id="mail" name="mail" required>
@@ -61,14 +61,16 @@ if (isset($_SESSION['user_id'])) {
                     <label for="tel">Tel:</label>
                     <input type="tel" id="tel" name="tel" required>
                     <div class="button-group">
-                        <li><a href="..\C\logout.action.php" id="disconnect-btn">Disconnect</a></li> 
                         <li><button type="submit" id="modify-btn">Modify</button></li>
                     </div>
-
-                   
-                    
                 </form>
                 
+                <?php if ($isConnected): ?>
+                <form method="post" action="..\C\logout.action.php">
+                  <!-- <a href="..\C\logout.action.php" id="disconnect-btn">Disconnect</a> -->
+                <input type="submit" name="logout" value="Se déconnecter" class="logout-btn">
+                </form>
+                <?php endif; ?>
             </div>
 
 

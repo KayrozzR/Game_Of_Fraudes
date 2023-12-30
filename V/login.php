@@ -29,6 +29,7 @@
                     <input name="email" type="email" id="email" minlength="2" maxlength="30"   required>
                     <label for="Password">Password: </label>
                     <input name="password" type="password" id="password" minlength="2" maxlength="30" placeholder ="Password: "  required>
+                    <br>
                     <button type="submit">Connect</button>
                 </form>
             </div>
