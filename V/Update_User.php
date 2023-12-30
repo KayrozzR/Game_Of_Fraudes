@@ -1,5 +1,11 @@
 <!DOCTYPE html>
-<?php session_start();?>
+<?php session_start();
+
+// Vérifiez si l'utilisateur est connecté
+if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+    header("location: login.php");
+    exit;
+}?>
 <html>
 <head>
     <meta charset="utf-8">

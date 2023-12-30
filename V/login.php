@@ -12,13 +12,16 @@
 
 <body>
     <div class="pageIndex">
-        <nav>
-            <h1>Game of<br> Fraudes</h1>
-        </nav>
 
-        <form action="profil.php" method="POST">
-            <button type="submit">PROFIL</button>
-        </form>
+    
+    <nav>   
+     <h1> <a href="index.php">Game of<br> Fraudes </a></h1>
+   </nav>
+    <div>
+     <ul class="nav navbar-nav navbar-nav-first">
+       <a href="profil.php" class=profilButton>PROFIL</a>
+        </ul>
+    </div>
 
         <section class="lp">
 

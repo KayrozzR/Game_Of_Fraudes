@@ -11,16 +11,16 @@ class Debt
     private User $idReceiver;
     private Penality $penality;
     private Bool $status;
-    // private string $detail;
+    private string $detail;
 
-    public function __construct (User $idUser,User $idReceiver, Penality $penality, $date, bool $status)
+    public function __construct (User $idUser,User $idReceiver, Penality $penality, $date, bool $status, string $detail)
     {
         $this->idUser = $idUser;
         $this->idReceiver = $idReceiver;
         $this->penality = $penality ;
         $this->date = $date;
         $this->status = $status;
-        // $this->detail = $detail;
+        $this->detail = $detail;
     }
 
 

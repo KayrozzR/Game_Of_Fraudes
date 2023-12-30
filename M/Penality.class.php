@@ -2,15 +2,16 @@
 
 class Penality
 {
-    private int $id_penality;
+    private $id_penality;
     private string $libelle;
-    private float $price;
+    private int $price;
 
 
-    public function __construct(int $id_penality,string $libelle, float $price) {
+    public function __construct(string $libelle, int $price) {
+        $this->id_penality = $id_penality;
         $this->libelle = $libelle;
         $this->price = $price;
-        $this->id_penality = $id_penality;
+        
     }
 
     public function getIdPenality()

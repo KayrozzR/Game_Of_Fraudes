@@ -8,6 +8,7 @@ include_once "../M/Penality.class.php";
 
 $libelle = $_POST["Libelle"];
 $price = $_POST["Price"];
+$price = (int)$price;
 $penality1 = new Penality($libelle, $price);
 
 DB_Manager::createPenality($penality1);

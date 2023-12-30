@@ -2,7 +2,7 @@
 
 
 class User {
-    private int $idUser;
+    private $idUser;
     private string $nameUser;
     private string $firstnameUser;
     private string $telUser;
@@ -11,7 +11,7 @@ class User {
     private int $cpt_Denounce;
 
 
-    public function __construct(int $idUser,string $nameUser, string $firstnameUser, string $telUser, string $mailUser,string $passwordUser){
+    public function __construct(string $nameUser, string $firstnameUser, string $telUser, string $mailUser,string $passwordUser){
         $this->nameUser = $nameUser;
         $this->firstnameUser = $firstnameUser;
         $this->telUser = $telUser;

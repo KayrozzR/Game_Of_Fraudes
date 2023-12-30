@@ -166,8 +166,8 @@ public static function updateDebt($status,$idDebt) : void {
 
 public static function createDebt($debt) : void {
     $bdd = new PDO('mysql:host=localhost;dbname=Game_of_fraudes;charset=utf8mb4', 'root', '');
-    $sql = "INSERT INTO debt (`Date`, `Status`, `ID_Giver`, `ID_Receiver`, `ID_Penality`) VALUES
-    (?,?,?,?,?);";
+    $sql = "INSERT INTO debt (`Date`, `Status`, `Firstname_User`, `Firstname_Receiver`, `Libelle`,`Detail`) VALUES
+    (?,?,?,?,?,?);";
     $stmt= $bdd->prepare($sql);
     $stmt->execute([$debt->getDate(),$debt->getStatus(),$debt->getIdReceiver()->getIdUser(),$debt->getIdUser()->getIdUser(),$debt->getPenality()->getIdPenality()]); 
     }
@@ -175,7 +175,7 @@ public static function createDebt($debt) : void {
     public static function readUser($firstnameUser) : array {
         //driver vers la DB
         $bdd = new PDO('mysql:host=localhost;dbname=Game_of_fraudes;charset=utf8mb4', 'root', '');
-        $stmt = $bdd->prepare("SELECT * FROM `user` WHERE Firstname_User = ?;");
+        $stmt = $bdd->prepare("SELECT * FROM `user` WHERE Firstname_User = ?; ");
         $stmt->execute($firstnameUser);
         //rapatrie toutes les lignes de la table
         $listUsers = $stmt->fetchAll();
@@ -225,7 +225,11 @@ public static function login($Inputemail, $Inputpassword) {
                 $_SESSION['user_Firstname'] = $row['Firstname_User'];
 
                 // Authentification réussie
+                $_SESSION["loggedin"] = true;
                 echo "Authentification réussie. Bienvenue, " . $row['Firstname_User'];
+
+                
+
             } else {
                 // Authentification échouée
                 echo "Mot de passe incorrect. Veuillez réessayer.";

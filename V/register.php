@@ -2,6 +2,7 @@
 
 /** @author Mathilde */
 session_start();
+
 ?>
 
 <!DOCTYPE html>
@@ -17,13 +18,14 @@ session_start();
 
 <body>
     <div class="pageIndex">
-        <nav>
-            <h1>Game of<br> Fraudes</h1>
-        </nav>
-
-        <form action="profil.php" method="POST">
-            <button type="submit">PROFIL</button>
-        </form>
+    <nav>   
+     <h1> <a href="index.php">Game of<br> Fraudes </a></h1>
+   </nav>
+    <div>
+     <ul class="nav navbar-nav navbar-nav-first">
+       <a href="profil.php" class=profilButton>PROFIL</a>
+        </ul>
+    </div>
 
         <section class="lp">
 
@@ -31,10 +33,10 @@ session_start();
                 <p>Register</p>
                 <br>
                 <form action="../C/register.action.php" method="POST" class="formRegister">
-                    <input name="name" type="text" minlength="2" maxlength="30" placeholder=" Name" required /><br>
-                    <input name="firstname" type="text" minlength="2" maxlength="30" placeholder=" FirstName" required /><br>
-                    <input type="email" name="email" placeholder="Email" required /><br>
-                    <input type="tel" name="tel" placeholder="Tel" required /><br>
+                    <input name="Name_User" type="text" minlength="2" maxlength="30" placeholder="Name_User" required /><br>
+                    <input name="FirstName_User" type="text" minlength="2" maxlength="30" placeholder="FirstName" required /><br>
+                    <input type="email" name="Mail" placeholder="Email" required /><br>
+                    <input type="tel" name="Tel" placeholder="Tel" required /><br>
                     <input type="password" name="password" placeholder="Password" minlength="6" required /><br>
                     <button>Submit</button>
                 </form>
@@ -50,7 +52,7 @@ session_start();
                 <a href="../C/readDebt.action.php" class="stripe__item">
                     <p class="text_slide"> Debt Historique </p>
                 </a>
-                <a href="../C/readUserList.php" class="stripe__item">
+                <a href="../C/readUser.action.php" class="stripe__item">
                     <p class="text_slide">User List </p>
                 </a>
                 <a href="penalityForm.php" class="stripe__item">

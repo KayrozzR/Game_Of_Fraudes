@@ -28,7 +28,7 @@ $date = new DateTime();
 // $detail = $_POST["detail"]
 $status = $_POST["Status"];
 
-$debt = new Debt ($userGiver,$idReceiver,$penality,$date,$status);
+$debt = new Debt ($userGiver,$idReceiver,$penality,$date,$status, $detail);
 
 DB_Manager::createDebt($debt);
 

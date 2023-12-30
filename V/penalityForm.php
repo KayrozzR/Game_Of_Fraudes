@@ -1,6 +1,12 @@
 <?php
 /** @author Tina */
-session_start ();
+session_start();
+
+// Vérifiez si l'utilisateur est connecté
+if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+    header("location: login.php");
+    exit;
+}
 ?>
 
 <!DOCTYPE html>
@@ -16,31 +22,46 @@ session_start ();
 
 <body>
     <div class="pageIndex">
-        <nav>
-            <h1>Game of<br> Fraudes</h1>
-        </nav>
 
-        <form action="profil.php" method="POST">
-            <button type="submit">PROFIL</button>
-        </form>
+    <nav>   
+     <h1> <a href="index.php">Game of<br> Fraudes </a></h1>
+   </nav>
+    <div>
+     <ul class="nav navbar-nav navbar-nav-first">
+       <a href="profil.php" class=profilButton>PROFIL</a>
+        </ul>
+    </div>
 
         <section class="lp">
 
             <div class="textcenter">
                 <p>Denounce</p>
                 <br>
-                <form action="#" method="POST" class="formPenality">
+
+                <form action="..\C\createDebt.action.php" method="POST" class="formPenality">
+
                     <label for="denounceWho">Who: </label>
-                    <input name="denounceWho" type="text" minlength="2" maxlength="30"  required><br>
-
-                    <label for="denounceWhy">Why: </label>
-                    <input name="denounceWhy" type="text" minlength="2" maxlength="30" required /><br>
-
-                    <textarea name="denounceDetails"   id="denounceDetails" placeholder="Details" rows="4" required></textarea>
-                    
+                    <select name = "Firstname_User" placeholder = "Firstname_User">
+                        <option value ="">Select a firstname</option>
+                        <?php foreach ($_SESSION ["userList"] as $key) :?> 
+                            <option value="<?php echo $key ["Firstname_User"] ?>">
+                                <?php echo $key ["Firstname_User"] ?>
+                            </option>
+                        <?php endforeach ?>
+                    </select>
+                     
+                    <label for="denounceWhy">Why: </label>                
+                    <select name = "Libelle" placeholder = "Libelle">
+                        <option value ="">Select a label</option>
+                        <?php foreach ($_SESSION ["penality"] as $key) :?> 
+                            <option value="<?php echo $key ["Libelle"] ?>">
+                                <?php echo $key ["Libelle"] ?>
+                            </option>
+                        <?php endforeach ?>
+                    </select>
+                    <textarea name="Detail"   id="Detail" placeholder="Detail" rows="4" required></textarea>
                     <button type="submit">Denounce!</button>
                 </form>
-
             </div>
 
 

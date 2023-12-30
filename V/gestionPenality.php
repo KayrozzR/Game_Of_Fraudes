@@ -2,7 +2,14 @@
 
 /** @author Mathilde */
 session_start();
+
+// Vérifiez si l'utilisateur est connecté
+if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+    header("location: login.php");
+    exit;
+}
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -15,22 +22,25 @@ session_start();
     <link href='https://fonts.googleapis.com/css?family=Julius Sans One' rel='stylesheet'>
 </head>
 
-<body>
+<body>   
     <div class="pageIndex">
-        <nav>
-            <h1>Game of<br> Fraudes</h1>
-        </nav>
+        
+     <nav>   
+     <h1> <a href="index.php">Game of<br> Fraudes </a></h1>
+   </nav>
+    <div>
+     <ul class="nav navbar-nav navbar-nav-first">
+       <a href="profil.php" class=profilButton>PROFIL</a>
+        </ul>
+    </div>
 
-        <form action="profil.php" method="POST" class="profilButton">
-            <button type="submit">PROFIL</button>
-        </form>
 
         <section class="lp">
 
             <div class="textcenter">
                 <p>Penalities</p>
                 <br>
-                <div class="formCenter">
+                <div class="formPenality">
                     <form action="../C/createPenality.action.php" method="POST" class="formRegister">
                         <input name="Libelle" type="text" placeholder="Libelle of the punition" required /><br>
                         <input name="Price" type="text" placeholder="Price of the punition" required /><br>
@@ -81,7 +91,7 @@ session_start();
                 <a href="../C/readDebt.action.php" class="stripe__item">
                     <p class="text_slide"> Debt Historique </p>
                 </a>
-                <a href="../C/readUserList.php" class="stripe__item">
+                <a href="../C/readUser.action.php" class="stripe__item">
                     <p class="text_slide">User List </p>
                 </a>
                 <a href="penalityForm.php" class="stripe__item">

@@ -3,6 +3,11 @@
 /** @author Tina */
 session_start();
 
+// Vérifiez si l'utilisateur est connecté
+if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+    header("location: login.php");
+    exit;
+}
 ?>
 
 <!DOCTYPE html>
@@ -18,13 +23,14 @@ session_start();
 
 <body>
     <div class="pageIndex">
-        <nav>
-            <h1>Game of<br> Fraudes</h1>
-        </nav>
-
-        <form action="profil.php" method="POST" class="profilButton">
-            <button type="submit">PROFIL</button>
-        </form>
+    <nav>   
+     <h1> <a href="index.php">Game of<br> Fraudes </a></h1>
+   </nav>
+    <div>
+     <ul class="nav navbar-nav navbar-nav-first">
+       <a href="profil.php" class=profilButton>PROFIL</a>
+        </ul>
+    </div>
 
         <section class="lp">
 

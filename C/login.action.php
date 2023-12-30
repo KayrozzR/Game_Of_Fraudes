@@ -13,4 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 $authentication = DB_Manager::login($Inputemail, $Inputpassword);
 
 }
+
+
+
 ?>
