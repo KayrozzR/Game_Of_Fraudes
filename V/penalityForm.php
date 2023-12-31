@@ -62,21 +62,44 @@ if (isset($_SESSION['user_id'])) {
                         <?php endforeach ?>
                     </select>
                      <br>
-                    <label for="denounceWhy">Why: </label>                
-                    <select name = "Libelle" placeholder = "Libelle">
-                      <br>
-                        <option value ="">Select a label</option>
-                        <?php foreach ($_SESSION ["penality"] as $key) :?> 
-                            <option value="<?php echo $key ["Libelle"] ?>">
-                                <?php echo $key ["Libelle"] ?>
+                     <label for="denounceWhy">Why: </label>
+                      <select name="Libelle" placeholder="Libelle" id="denounceWhy">
+                        <option value="">Select a label</option>
+                          <?php foreach ($_SESSION["penality"] as $key) :?>
+                            <option value="<?php echo $key["Libelle"] ?>">
+                              <?php echo $key["Libelle"] ?>
                             </option>
                         <?php endforeach ?>
-                    </select>
-                    <br>
-                    <textarea name="Detail"   id="Detail" placeholder="Detail" rows="4" required></textarea>
-                    <br>
-                    <button type="submit">Denounce!</button>
-                </form>
+                      </select>
+                       <br>
+    <div id="retardMultiplier" style="display: none;">
+        <label for="multiplier">Multiplier x10min: </label>
+        <select name="Multiplier">
+            <option value="1">1x</option>
+            <option value="2">2x</option>
+            <option value="3">3x</option>
+            <option value="4">4x</option>
+            <option value="5">5x</option>
+        </select>
+        <br>
+    </div>
+
+    <textarea name="Detail" id="Detail" placeholder="Detail" rows="4" required></textarea>
+    <br>
+    <button type="submit">Denounce!</button>
+
+    <script>
+        document.getElementById('denounceWhy').addEventListener('change', function () {
+            var retardMultiplier = document.getElementById('retardMultiplier');
+            if (this.value === 'Retard') {
+                retardMultiplier.style.display = 'block';
+            } else {
+                retardMultiplier.style.display = 'none';
+            }
+        });
+    </script>
+
+</form>
             </div>
 
 
