@@ -3,26 +3,26 @@
 include_once "../M/User.class.php";
 include_once "../M/Penality.class.php";
 
-class Debt 
+class Debt
 {
-    private int $idDebt;
-    private string $date;
+    private ?int $nb_debt;
     private User $idUser;
     private User $idReceiver;
     private Penality $penality;
-    private Bool $status;
+    private string $date;
+    private bool $status;
     private string $detail;
 
-    public function __construct (User $idUser,User $idReceiver, Penality $penality, $date, bool $status, string $detail)
+    public function __construct(?int $nb_debt, User $idUser, User $idReceiver, Penality $penality, string $date, bool $status, string $detail)
     {
+        $this->nb_debt = $nb_debt;
         $this->idUser = $idUser;
         $this->idReceiver = $idReceiver;
-        $this->penality = $penality ;
+        $this->penality = $penality;
         $this->date = $date;
         $this->status = $status;
         $this->detail = $detail;
     }
-
 
 
     /**

@@ -1,35 +1,61 @@
 <?php
-/** @author Ricky */
 session_start();
 
-include_once "../M/DB_Manager.class.php";
-include_once "../M/Debt.class.php";
-include_once "../M/Penality.class.php";
+
 include_once "../M/User.class.php";
+include_once "../M/Penality.class.php";
+include_once "../M/Debt.class.php";
+include_once "../M/DB_Manager.class.php";
 
+// Vérifiez si l'utilisateur est connecté
+if (!isset($_SESSION['user_id']) || empty($_SESSION['user_id'])) {
+    echo "Vous devez être connecté pour dénoncer une dette.";
+    exit();
+}
 
-// ,$nameUser = $_POST["Name_User"],$firstnameUser = $_POST["FirstName_User"],$telUser = $_POST["Tel"],$mailUser = $_POST["Mail"],$passwordUser = $_POST["password"]
-// $libelle = $_POST["Libelle"],$Price = $_POST["Price"]
-// $idUser = $_POST["ID_User"];
-// $nameUser = $_POST["Name_User"];
-// $firstnameUser = $_POST["FirstName_User"];
-// $telUser = $_POST["Tel"];
-// $mailUser = $_POST["Mail"];
-// $passwordUser = $_POST["password"];
-// $id_Penality = $_POST["ID_Penality"];
-// $libelle = $_POST["Libelle"];
-// $Price = $_POST["Price"];
+// Récupérez l'expéditeur (utilisateur connecté) depuis la session
+$userGiverId = $_SESSION['user_id'];
+$userGiver = DB_Manager::readUserById($userGiverId);
 
-$userGiver = new User(DB_Manager::readUser($_POST["Firstname_User"]));
-$idReceiver = new User(DB_Manager::readUser($_POST["Firstname_User"]));
-$penality = new Penality(DB_Manager::readPenalitie($_POST["Libelle"]));
-$date = new DateTime();
-// $date = "15/12/2023";
-// $detail = $_POST["detail"]
-$status = $_POST["Status"];
+// Récupérer l'ID de l'utilisateur destinataire depuis le formulaire
+$idReceiver = isset($_POST['idReceiver']) ? intval($_POST['idReceiver']) : 0;
 
-$debt = new Debt ($userGiver,$idReceiver,$penality,$date,$status, $detail);
+// Récupérer l'objet User correspondant à l'ID de l'utilisateur destinataire
+$userReceiver = DB_Manager::readUserById($idReceiver);
 
+// Vérifier si l'utilisateur destinataire a été correctement récupéré
+if (!$userReceiver) {
+    echo "Erreur lors de la récupération de l'utilisateur destinataire.";
+    exit();
+}
+
+// Récupérer le reste des données du formulaire
+$libelle = $_POST['Libelle'];
+$penality = DB_Manager::readPenality($libelle);
+
+// Vérifier que la pénalité a été correctement récupérée
+if (!$penality) {
+    echo "Erreur lors de la récupération de la pénalité.";
+    exit();
+}
+
+$date = date("Y-m-d H:i:s");
+$status = true; // Par défaut, vous pouvez ajuster cela en fonction de votre logique
+$detail = $_POST['Detail'];
+
+// Créer un objet Debt en utilisant les objets User et Penality récupérés
+$debt = new Debt(
+    null, // ou l'ID de la dette s'il est disponible, sinon null
+    $userGiver,
+    $userReceiver,
+    $penality,
+    $date,
+    $status,
+    $detail
+);
+
+// Enregistrer la dette dans la base de données
 DB_Manager::createDebt($debt);
 
-header("Location:../V/Update_User.php/");
+echo "La dette a été créée avec succès.";
+?>

@@ -49,19 +49,21 @@ if (isset($_SESSION['user_id'])) {
             <div class="textcenter">
                 <p>Denounce</p>
                 <br>
-
                 <form action="..\C\createDebt.action.php" method="POST" class="formPenality">
 
-                    <label for="denounceWho">Who: </label>
-                    <select name = "Firstname_User" placeholder = "Firstname_User">
-                        <option value ="">Select a firstname</option>
-                        <?php foreach ($_SESSION ["userList"] as $key) :?> 
-                            <option value="<?php echo $key ["Firstname_User"] ?>">
-                                <?php echo $key ["Firstname_User"]." ".$key ["Name_User"] ?>
-                            </option>
-                        <?php endforeach ?>
-                    </select>
-                     <br>
+<!-- Utilisateur connecté -->
+<input type="hidden" name="idUser" value="<?php echo $_SESSION['user_id']; ?>">
+
+<label for="denounceWhom">Whom: </label>
+<select name="idReceiver" placeholder="idReceiver">
+    <option value="">Select a firstname</option>
+    <?php foreach ($_SESSION["userList"] as $key) : ?>
+        <option value="<?php echo $key["ID_User"] ?>">
+            <?php echo $key["Firstname_User"] . " " . $key["Name_User"] ?>
+        </option>
+    <?php endforeach ?>
+</select>
+<br>
                      <label for="denounceWhy">Why: </label>
                       <select name="Libelle" placeholder="Libelle" id="denounceWhy">
                         <option value="">Select a label</option>

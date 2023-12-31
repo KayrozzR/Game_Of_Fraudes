@@ -164,22 +164,72 @@ public static function updateDebt($status,$idDebt) : void {
     $stmt->execute([$status, $idDebt]);
     }
 
-public static function createDebt($debt) : void {
-    $bdd = new PDO('mysql:host=localhost;dbname=Game_of_fraudes;charset=utf8mb4', 'root', '');
-    $sql = "INSERT INTO debt (`Date`, `Status`, `Firstname_User`, `Firstname_Receiver`, `Libelle`,`Detail`) VALUES
-    (?,?,?,?,?,?);";
-    $stmt= $bdd->prepare($sql);
-    $stmt->execute([$debt->getDate(),$debt->getStatus(),$debt->getIdReceiver()->getIdUser(),$debt->getIdUser()->getIdUser(),$debt->getPenality()->getIdPenality()]); 
+    public static function createDebt(Debt $debt): void
+    {
+        $bdd = new PDO('mysql:host=localhost;dbname=Game_of_fraudes;charset=utf8mb4', 'root', '');
+        $sql = "INSERT INTO debt (`Date`, `Status`, `Id_Receiver`, `Id_User`, `Id_Penality`, `Detail`) VALUES (?, ?, ?, ?, ?, ?)";
+
+        $stmt = $bdd->prepare($sql);
+        $stmt->execute([
+            $debt->getDate(),
+            $debt->getStatus(),
+            $debt->getIdUser()->getIdUser(),
+            $debt->getIdReceiver()->getIdUser(),
+            $debt->getPenality()->getIdPenality(),
+            $debt->getDetail(),
+        ]);
     }
+    // ...
+
+public static function readPenality($libelle): ?Penality
+{
+    $bdd = new PDO('mysql:host=localhost;dbname=Game_of_fraudes;charset=utf8mb4', 'root', '');
+    $stmt = $bdd->prepare("SELECT * FROM `penality` WHERE LIBELLE = ?");
+    $stmt->execute([$libelle]);
+
+    $penalityData = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if (!$penalityData) {
+        return null;
+    }
+
+    return new Penality($penalityData['Libelle'], $penalityData['Price'], $penalityData['ID_Penality']);
+}
+
+// ...
+
+
 
     public static function readUser($firstnameUser) : array {
         //driver vers la DB
         $bdd = new PDO('mysql:host=localhost;dbname=Game_of_fraudes;charset=utf8mb4', 'root', '');
         $stmt = $bdd->prepare("SELECT * FROM `user` WHERE Firstname_User = ?; ");
-        $stmt->execute($firstnameUser);
+        $stmt->execute([$firstnameUser]);
         //rapatrie toutes les lignes de la table
         $listUsers = $stmt->fetchAll();
         return $listUsers;
+    }
+    public static function readUserById($userId) {
+        $bdd = new PDO('mysql:host=localhost;dbname=game_of_fraudes;charset=utf8mb4', 'root', '');
+        $stmt = $bdd->prepare("SELECT * FROM `user` WHERE ID_User = ?");
+        $stmt->execute([$userId]);
+
+        // Récupérer les données de l'utilisateur
+        $userData = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if (!$userData) {
+            return null;
+        }
+
+        // Créer et retourner un objet User
+        return new User(
+            $userData['ID_User'],
+            $userData['Name_User'],
+            $userData['Firstname_User'],
+            $userData['Tel'],
+            $userData['Mail'],
+            $userData['Password']
+        );
     }
 
     public static function readPenalitie($libelle) : array {
