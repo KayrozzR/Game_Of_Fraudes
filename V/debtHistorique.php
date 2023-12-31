@@ -74,9 +74,17 @@ if (isset($_SESSION['user_id'])) {
                             <td> <input type="checkbox" id="paiement" name="paiement" value="1" /></td>
                         </tr> <?php
                                }} ?>
-                    </table>  
-                    <input type="submit" value="PAID!"> 
+                    </table> 
+                    <th>Total to paid: </th>
+                    <td> 0€</td>
+                    <br>
+                    <input type="submit" value="PAID!">
                 </form>
+                <br>
+<div>
+            <p>Total Debt = </p>
+</div>
+                
                 </div>
             </div>
 
@@ -94,7 +102,6 @@ if (isset($_SESSION['user_id'])) {
                     <p class="text_slide"> Denounce </p>
                 </a>
             </div>
-
         </section>
     </div>
     <script src="script.js"></script>
