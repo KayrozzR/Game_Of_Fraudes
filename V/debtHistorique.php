@@ -50,36 +50,33 @@ if (isset($_SESSION['user_id'])) {
                 <p>Historique</p>
         
                 <div class="table-wrapper">
-                    <table class="fl-table">
+                    <table class="fl-table" id="monFormulaire" >
                         <thead>
-                            <tr>
-                                <th>FirstName</th>
-                                <th>Victime</th>
-                                <th>Why?</th>
-                                <th>Value</th>
-                                <th>When?</th>
-                            </tr>
-                        </thead>
-
                         <tr>
-                            <?php if(isset($_SESSION["userList"]) && !empty($_SESSION["userList"])) {
-                                   foreach ($_SESSION["userList"] as $key) {
-                            ?>
+      <th onclick="trierTableau(0)">Hangman</th>
+      <th onclick="trierTableau(1)">Victim</th>
+      <th onclick="trierTableau(2)">Why?</th>
+      <th onclick="trierTableau(3)">Value</th>
+      <th onclick="trierTableau(4)">When?</th>
+      <th onclick="trierTableau(5)">Paid</th>
+    </tr>
+                        </thead>
+                        <form action="..\C\updateHistorique.action.php" method="post" onsubmit="disableCheckbox()">
+                        <tr>
+                              <?php if(isset($_SESSION["userList"]) && !empty($_SESSION["userList"])) {
+                                   foreach ($_SESSION["userList"] as $key) { ?>
 
-                            <td><?php echo $key['Firstname_User']; ?><?php echo $key['Name_User']; ?></td>
-                            <td></td>
+                            <td><?php echo $key['Firstname_User']; ?> <?php echo $key['Name_User']; ?></td>
+                            <td>Victim</td>
                             <td>Cause</td>
                             <td>0€</td>
                             <td>00/00/0000</td>
-                                </form>
-                            </td>
-                        </tr>
-
-                        <?php
-                        }}
-                        ?>
-
-                    </table>   
+                            <td> <input type="checkbox" id="paiement" name="paiement" value="1" /></td>
+                        </tr> <?php
+                               }} ?>
+                    </table>  
+                    <input type="submit" value="PAID!"> 
+                </form>
                 </div>
             </div>
 
@@ -100,7 +97,7 @@ if (isset($_SESSION['user_id'])) {
 
         </section>
     </div>
-
+    <script src="script.js"></script>
 </body>
 
 </html>

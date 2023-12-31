@@ -224,6 +224,8 @@ public static function login($Inputemail, $Inputpassword) {
                 $_SESSION['user_id'] = $row['ID_User'];
                 $_SESSION['user_Firstname'] = $row['Firstname_User'];
                 $_SESSION['user_Name'] = $row['Name_User'];
+                $_SESSION['user_Mail'] = $row['Mail'];
+                $_SESSION['user_Tel'] = $row['Tel'];
 
                 // Authentification réussie
                 $isConnected = isset($_SESSION['user_id']) && !empty($_SESSION['user_id']);
