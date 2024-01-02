@@ -51,7 +51,7 @@ if (isset($_SESSION['user_id'])) {
             <div class="textcenter">
                 
                 <p>Profil</p>
-                <form action="#" method="POST" class="formProfil">
+                <form action="../C/updateUser.action.php" method="POST" class="formProfil">
                     <label for="name">Name: <?php echo $user_name; ?></label>
                     <br>
                     <label for="firstname">Firstname: <?php echo $user_firstname; ?></label>

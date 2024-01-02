@@ -19,16 +19,22 @@ include_once "../M/User.class.php";
 // $id_Penality = $_POST["ID_Penality"];
 // $libelle = $_POST["Libelle"];
 // $Price = $_POST["Price"];
+$_SESSION['userList'] = DB_Manager::readUsers();
+$_SESSION['penalityList'] = DB_Manager::readPenalities();
 
-$userGiver = new User(DB_Manager::readUser($_POST["Firstname_User"]));
+$_SESSION["userGiver"];
+
+// $users = (DB_Manager::readUsers());
+//             $_SESSION["userReceiver"] = new User ($users["Name_User"],$users["Firstname_User"],$users["Tel"],$users["Mail"],$users["password"]);
+//             $_SESSION["ID_userReceiver"] = $users ["ID_User"];
 $idReceiver = new User(DB_Manager::readUser($_POST["Firstname_User"]));
 $penality = new Penality(DB_Manager::readPenalitie($_POST["Libelle"]));
 $date = new DateTime();
 // $date = "15/12/2023";
-// $detail = $_POST["detail"]
+$detail = $_POST["detail"];
 $status = $_POST["Status"];
 
-$debt = new Debt ($userGiver,$idReceiver,$penality,$date,$status, $detail);
+$debt = new Debt ($_SESSION["userGiver"],$idReceiver,$penality,$date,$status, $detail);
 
 DB_Manager::createDebt($debt);
 
