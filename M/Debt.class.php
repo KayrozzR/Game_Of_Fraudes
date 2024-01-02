@@ -76,4 +76,12 @@ class Debt
 
 
 
+
+    /**
+     * Get the value of libelle
+     */ 
+    public function getLibelle()
+    {
+        return $this->libelle;
+    }
 }

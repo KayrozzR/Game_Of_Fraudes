@@ -67,7 +67,7 @@ if (isset($_SESSION['user_id'])) {
                                    foreach ($_SESSION["userList"] as $key) { ?>
 
                             <td><?php echo $key['Firstname_User']; ?> <?php echo $key['Name_User']; ?></td>
-                            <td>Victim</td>
+                            <td> <?php echo $key['Firstname_User']; ?> <?php echo $key['Name_User']; ?></td>
                             <td>Cause</td>
                             <td>0€</td>
                             <td>00/00/0000</td>
