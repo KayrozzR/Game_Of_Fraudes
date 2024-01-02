@@ -26,6 +26,9 @@ function trierTableau(colonne, typeTri) {
 
 
   function disableCheckbox() {
-    // Désactive le checkbox après avoir soumis le formulaire
-    document.getElementById("paiement").disabled = true;
+    // Désactive les checkbox après avoir soumis le formulaire
+    var checkboxes = document.getElementsByClassName("paiementCheckbox");
+    for (var i = 0; i < checkboxes.length; i++) {
+        checkboxes[i].disabled = true;
+    }
 }

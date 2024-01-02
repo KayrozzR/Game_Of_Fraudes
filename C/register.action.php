@@ -13,7 +13,7 @@ $firstnameUser = $_POST["FirstName_User"];
 $telUser = $_POST["Tel"];
 $mailUser = $_POST["Mail"];
 $passwordUser = $_POST["password"];
-$user1 = new User($nameUser, $firstnameUser, $telUser, $mailUser, $passwordUser);
+$user1 = new User($id_user, $nameUser, $firstnameUser, $telUser, $mailUser, $passwordUser);
 
 //vérification des conditions avant de créer: name et firstname composés uniquement de lettres, tel composé uniquement de chiffres. 
 if (DB_Manager::isAlpha($nameUser) && DB_Manager::isAlpha($firstnameUser) && DB_Manager::isBeta($telUser)) {

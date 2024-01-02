@@ -59,7 +59,7 @@ if (isset($_SESSION['user_id'])) {
                             <th onclick="trierTableau(3)">When?</th>
                             <th onclick="trierTableau(4)">Price</th>
                             <th onclick="trierTableau(5)">Status</th>
-                            <th onclick="trierTableau(5)">Paid</th>
+                            <th onclick="trierTableau(6)">Paid</th>
     </tr>
                         </thead>
                         <form action="..\C\readDebt.action.php" method="post" onsubmit="disableCheckbox()">
@@ -73,7 +73,7 @@ if (isset($_SESSION['user_id'])) {
                             <td><?php echo $key['Date']; ?></td>
                             <td><?php echo $key['Price']; ?></td>
                             <td><?php echo $key['Status']; ?></td>
-                            <td> <input type="checkbox" id="paiement" name="paiement" value="1" /></td>
+                            <td> <input type="checkbox" class="paiementCheckbox" name="paiement[]" value= 0 /></td></td>
                         </tr> <?php
                                }} ?>
                     </table> 
@@ -84,7 +84,16 @@ if (isset($_SESSION['user_id'])) {
                 </form>
                 <br>
 <div>
-            <p>Total Debt = </p>
+<p>Total Debt = 
+            <?php 
+            $totalDebt = 0;
+            foreach ($_SESSION["debt"] as $key) { 
+                $totalDebt = $totalDebt + $key['Price'];
+  
+            }
+            echo $totalDebt;
+            ?>
+            </p>
 </div>
                 
                 </div>

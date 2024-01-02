@@ -30,9 +30,12 @@ if (!$userReceiver) {
 }
 
 // Récupérer le reste des données du formulaire
+
+
 $libelle = $_POST['Libelle'];
 $penality = DB_Manager::readPenality($libelle);
-var_dump($libelle);
+
+
 // Vérifier que la pénalité a été correctement récupérée
 if (!$penality) {
     echo "Erreur lors de la récupération de la pénalité.";
@@ -54,7 +57,7 @@ $debt = new Debt(
     $status,
     $detail,
     $libelle,
-    $price
+ 
 );
 
 

@@ -129,6 +129,18 @@ nav {
   padding: 3rem;
   border-radius: 10px;
 }
+.formPenality input,
+.formPenality select,
+.formPenality textarea,
+#retardMultiplier select,
+.formPenality button {
+  width: 20rem;
+  height: 2.5rem;
+  border-radius: 10px;
+  border-color: #eb7d3e;
+  font-family: "Julius Sans One";
+  margin-top: 1rem;
+}
 
 /* register
 .formCenter {
