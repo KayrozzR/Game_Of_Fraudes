@@ -49,19 +49,27 @@ if (isset($_SESSION['user_id'])) {
             <div class="textcenter">
                 
                 <p>Profil</p>
-                <form action="..\C\updateUser.action.php" method="POST" class="formProfil">
-                    <label for="name">Name: <?php echo $user_name; ?></label>
-                    <br>
-                    <label for="firstname">Firstname: <?php echo $user_firstname; ?></label>
-                    <br>
-                    <label for="debt">Debt: 0.50€</label>
-                    <br>
-
-                    <label for="Mail">Mail:</label>
-                    <input type="Mail" id="Mail" name="Mail" required>
-
-                    <label for="Tel">Tel:</label>
-                    <input type="Tel" id="Tel" name="Tel" required>
+                <div class="table-wrapper">
+                    <table class="fl-table">
+                        <thead>
+                            <tr>
+                                <th>FirstName</th>
+                                <th>Name</th>
+                                <th>Mail</th>                                          
+                            </tr>
+                        </thead>
+                <tr>
+                            <?php if(isset($_SESSION["userList"]) && !empty($_SESSION["userList"])) {
+                                   foreach ($_SESSION["userList"] as $key) {
+                            ?>
+                            <td><?php echo $key['Firstname_User']; ?></td>
+                            <td><?php echo $key['Name_User']; ?></td>
+                            <td><?php echo $key['Mail']; ?></td>                           
+                        </tr>
+                        <?php
+                        }
+                      }
+                      ?>
                     <div class="button-group">
                         <li><button type="submit" id="modify-btn">Validate</button></li>
                     </div>

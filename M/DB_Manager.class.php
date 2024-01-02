@@ -164,12 +164,39 @@ public static function updateDebt($status,$idDebt) : void {
     $stmt->execute([$status, $idDebt]);
     }
 
-public static function createDebt($debt) : void {
-    $bdd = new PDO('mysql:host=localhost;dbname=Game_of_fraudes;charset=utf8mb4', 'root', '');
-    $sql = "INSERT INTO debt (`Date`, `Status`, `Firstname_User`, `Libelle`,`Detail`) VALUES
-    (?,?,?,?,?);";
-    $stmt= $bdd->prepare($sql);
-    $stmt->execute([$debt->getDate(),$debt->getStatus(),$debt->getFirstnameUser()->getIdUser(),$debt->getIdUser()->getIdUser(),$debt->getPenality()->getIdPenality()]); 
+    public static function createDebt(Debt $debt): void
+    {
+        $bdd = new PDO('mysql:host=localhost;dbname=Game_of_fraudes;charset=utf8mb4', 'root', '');
+        $sql = "INSERT INTO debt (`Date`,`Firstname_User`, `Status`, `Id_Denounce`, `Id_User`, `Id_Penality`, `Detail`, `Libelle`,`Price`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+        $stmt = $bdd->prepare($sql);
+        $stmt->execute([
+            $debt->getDate(),
+            $debt->getIdReceiver()->getFirstnameUser(),
+            $debt->getStatus(),
+            $debt->getIdUser()->getIdUser(),
+            $debt->getIdReceiver()->getIdUser(),
+            $debt->getPenality()->getIdPenality(),
+            $debt->getDetail(),
+            $debt->getPenality()->getLibelle(),
+            $debt->getPenality()->getPrice(),
+        ]);
+    }
+    // ...
+
+    public static function readPenality($libelle): ?Penality
+    {
+        $bdd = new PDO('mysql:host=localhost;dbname=Game_of_fraudes;charset=utf8mb4', 'root', '');
+        $stmt = $bdd->prepare("SELECT * FROM `penality` WHERE LIBELLE = ?");
+        $stmt->execute([$libelle]);
+    
+        $penalityData = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+        if (!$penalityData) {
+            return null;
+        }
+    
+        return new Penality($penalityData['Libelle'], $penalityData['Price'], $penalityData['ID_Penality']);
     }
 
     public static function readUser($firstnameUser) : array {

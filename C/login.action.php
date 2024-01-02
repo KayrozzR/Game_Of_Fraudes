@@ -2,9 +2,18 @@
 include_once "../M/DB_Manager.class.php";
 include_once "../M/User.class.php";
 
+/*
+// Vérifier si le formulaire de connexion est soumis
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Récupérer les données du formulaire
+    $Inputemail = $_POST['email'];
+    $Inputpassword = $_POST['password'];
 
-$_SESSION['userList'] = DB_Manager::readUsers();
-$_SESSION['penalityList'] = DB_Manager::readPenalities();
+
+$authentication = DB_Manager::login($Inputemail, $Inputpassword);
+
+}
+*/
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Récupérer les données du formulaire
@@ -17,14 +26,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $user = (DB_Manager::readUsers($Inputemail)[0]);
             $_SESSION["userGiver"] = new User ($user["Name_User"],$user["Firstname_User"],$user["Tel"],$user["Mail"],$user["password"]);
             $_SESSION["ID_userGiver"] = $user ["ID_User"];
-
-            $_SESSION["Name_User"];
-            $_SESSION["Firstname_User"];
-            $_SESSION["Tel"];
-            $_SESSION["Mail"];
         }
     }
-    $authentication = DB_Manager::login($Inputemail, $Inputpassword);
+     $authentication = DB_Manager::login($Inputemail, $Inputpassword);
     
     header("Location:../V/index.php");
 }
@@ -32,6 +36,8 @@ else {
     header('Location:../V/error.php');
 }
 
+
+?>
 
 
 ?>

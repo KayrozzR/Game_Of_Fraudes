@@ -1,71 +1,53 @@
 <?php
+class User
+{
+    private $id_user;
+    private $name_user;
+    private $firstname_user;
+    private $tel;
+    private $mail;
+    private $password;
 
-
-class User {
-    private $idUser;
-    private string $nameUser;
-    private string $firstnameUser;
-    private string $telUser;
-    private string $mailUser;
-    private string $passwordUser;
-    private int $cpt_Denounce;
-
-
-    public function __construct(string $nameUser, string $firstnameUser, string $telUser, string $mailUser,string $passwordUser){
-        $this->nameUser = $nameUser;
-        $this->firstnameUser = $firstnameUser;
-        $this->telUser = $telUser;
-        $this->mailUser = $mailUser;
-        $this->passwordUser = password_hash($passwordUser, PASSWORD_DEFAULT);
-        $this->idUser = $idUser;
-        // self :: $cpt_Denounce++;
+    public function __construct($id_user,$name_user, $firstname_user, $tel, $mail, $password)
+    {
+       $this->id_user = $id_user;
+        $this->name_user = $name_user;
+        $this->firstname_user = $firstname_user;
+        $this->tel = $tel;
+        $this->mail = $mail;
+        $this->password = password_hash($password, PASSWORD_DEFAULT);
     }
 
-    /**
-     * Get the value of nameUser
-     */
-    public function getNameUser()
+    // ... autres méthodes et getters
+
+    public function getNameUser(): string
     {
-        return $this->nameUser;
+        return $this->name_user;
     }
 
-    /**
-     * Get the value of firstnameUser
-     */
-    public function getFirstnameUser()
+    public function getFirstnameUser(): string
     {
-        return $this->firstnameUser;
+        return $this->firstname_user;
     }
 
-    /**
-     * Get the value of telUser
-     */
-    public function getTelUser()
+    public function getTelUser(): string
     {
-        return $this->telUser;
+        return $this->tel;
     }
 
-    /**
-     * Get the value of mailUser
-     */
-    public function getMailUser()
+    public function getMailUser(): string
     {
-        return $this->mailUser;
+        return $this->mail;
     }
 
-    /**
-     * Get the value of passwordUser
-     */
-    public function getPasswordUser()
+    public function getPasswordUser(): string
     {
-        return $this->passwordUser;
+        return $this->password;
     }
 
-    /**
-     * Get the value of idUser
-     */
-    public function getIdUser()
+    public function getIdUser(): int
     {
-        return $this->idUser;
+        return $this->id_user;
     }
 }
+?>
