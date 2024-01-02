@@ -167,7 +167,7 @@ public static function updateDebt($status,$idDebt) : void {
     public static function createDebt(Debt $debt): void
     {
         $bdd = new PDO('mysql:host=localhost;dbname=Game_of_fraudes;charset=utf8mb4', 'root', '');
-        $sql = "INSERT INTO debt (`Date`,`Firstname_User`, `Status`, `Id_Denounce`, `Id_User`, `Id_Penality`, `Detail`, `Libelle`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO debt (`Date`,`Firstname_User`, `Status`, `Id_Denounce`, `Id_User`, `Id_Penality`, `Detail`, `Libelle`,`Price`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         $stmt = $bdd->prepare($sql);
         $stmt->execute([
@@ -179,6 +179,7 @@ public static function updateDebt($status,$idDebt) : void {
             $debt->getPenality()->getIdPenality(),
             $debt->getDetail(),
             $debt->getPenality()->getLibelle(),
+            $debt->getPenality()->getPrice(),
         ]);
     }
     // ...
@@ -247,11 +248,11 @@ public static function updateDebt($status,$idDebt) : void {
 
 /** @author Mathilde <mathilde.brx@gmail.com>*/
 //fonction qui ajoute 1 au compteur dénounce d'un user 
-public static function addCptDenounce($IDUser): void {
+public static function addCptDenounce($idUser): void {
     $bdd = new PDO('mysql:host=localhost;dbname=Game_of_fraudes;charset=utf8mb4', 'root', '');
-    $sql = "UPDATE user SET Cpt_Denonce = +1 WHERE ID_USER = ?";
+    $sql = "UPDATE user SET Cpt_Denonce = +1 WHERE ID_USER = id_Denounce";
     $stmt= $bdd->prepare($sql);
-    $stmt->execute([$IDUser]);
+    $stmt->execute([$idUser]);
 }
 ////////////////////////////////////////LOGIN/LOGOUT/////////////////////////////////////////////////////////////////////
 /** @author Simon <loro-simon@live.fr> */

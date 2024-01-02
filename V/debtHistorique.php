@@ -53,24 +53,26 @@ if (isset($_SESSION['user_id'])) {
                     <table class="fl-table" id="monFormulaire" >
                         <thead>
                         <tr>
-      <th onclick="trierTableau(0)">Hangman</th>
-      <th onclick="trierTableau(1)">Victim</th>
-      <th onclick="trierTableau(2)">Why?</th>
-      <th onclick="trierTableau(3)">Value</th>
-      <th onclick="trierTableau(4)">When?</th>
-      <th onclick="trierTableau(5)">Paid</th>
+                            <th onclick="trierTableau(0)">Victim</th>
+                            <th onclick="trierTableau(1)">Why?</th>
+                            <th onclick="trierTableau(2)">Details</th>
+                            <th onclick="trierTableau(3)">When?</th>
+                            <th onclick="trierTableau(4)">Price</th>
+                            <th onclick="trierTableau(5)">Status</th>
+                            <th onclick="trierTableau(5)">Paid</th>
     </tr>
                         </thead>
-                        <form action="..\C\updateHistorique.action.php" method="post" onsubmit="disableCheckbox()">
+                        <form action="..\C\readDebt.action.php" method="post" onsubmit="disableCheckbox()">
                         <tr>
-                              <?php if(isset($_SESSION["userList"]) && !empty($_SESSION["userList"])) {
-                                   foreach ($_SESSION["userList"] as $key) { ?>
+                              <?php if(isset($_SESSION["debt"]) && !empty($_SESSION["debt"])) {
+                                   foreach ($_SESSION["debt"] as $key) { ?>
 
-                            <td><?php echo $key['Firstname_User']; ?> <?php echo $key['Name_User']; ?></td>
-                            <td> <?php echo $key['Firstname_User']; ?> <?php echo $key['Name_User']; ?></td>
-                            <td>Cause</td>
-                            <td>0€</td>
-                            <td>00/00/0000</td>
+                            <td><?php echo $key['Firstname_User']; ?></td>
+                            <td><?php echo $key['Libelle']; ?></td>
+                            <td><?php echo $key['Detail']; ?></td>
+                            <td><?php echo $key['Date']; ?></td>
+                            <td><?php echo $key['Price']; ?></td>
+                            <td><?php echo $key['Status']; ?></td>
                             <td> <input type="checkbox" id="paiement" name="paiement" value="1" /></td>
                         </tr> <?php
                                }} ?>

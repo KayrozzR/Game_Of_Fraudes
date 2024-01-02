@@ -70,7 +70,7 @@ if (isset($_SESSION['user_id'])) {
                             <td><?php echo $key['Firstname_User']; ?></td>
                             <td><?php echo $key['Name_User']; ?></td>
                             <td><?php echo $key['Mail']; ?></td>
-                            <td>Cpt_Denonce</td>
+                            <td><?php echo $key['Cpt_Denonce']; ?></td>
                             <td><form action="..\C\deleteUser.action.php" method="POST">
                                 <button name="ID_User" value="<?php echo $key['ID_User']; ?>">DELETE</button>
                                 </form>

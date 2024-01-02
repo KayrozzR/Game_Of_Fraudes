@@ -53,12 +53,16 @@ $debt = new Debt(
     $date,
     $status,
     $detail,
-    $libelle
+    $libelle,
+    $price
 );
 
 
 // Enregistrer la dette dans la base de données
 DB_Manager::createDebt($debt);
 
-echo "La dette a été créée avec succès.";
+// DB_Manager::addCptDenounce($userGiver);
+
+$_SESSION["debt"] = DB_Manager::readDebts();
+header("Location:../V/debtHistorique.php");
 ?>
