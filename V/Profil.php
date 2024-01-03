@@ -43,7 +43,7 @@ if (isset($_SESSION['user_id'])) {
    </nav>
     <div>
      <ul class="nav navbar-nav navbar-nav-first">
-     <a href="../C/readProfil.action.php" class="profilButton" >PROFIL: <?php echo $status_message; ?> </a>
+     <a href="profil.php" class="profilButton" >PROFIL: <?php echo $status_message; ?> </a>
         </ul>
     </div>
 
