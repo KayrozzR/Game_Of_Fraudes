@@ -46,42 +46,44 @@ if (isset($_SESSION['user_id'])) {
     </div>
 
         <section class="lp">
-            <div class="textcenter">
+            <div class="textusers">
                 <p>users </p>
-        
-                <div class="table-wrapper">
-                    <table class="fl-table">
-                        <thead>
-                            <tr>
-                                <th>FirstName</th>
-                                <th>Name</th>
-                                <th>Mail</th>
-                                <th>CPT</th>
-                                <th>Delete</th>
-                                
-                            </tr>
-                        </thead>
+                <div class= "tabusers">
+            
+                    <div class="table-wrapper">
+                        <table class="fl-table">
+                            <thead>
+                                <tr>
+                                    <th>FirstName</th>
+                                    <th>Name</th>
+                                    <th>Mail</th>
+                                    <th>CPT</th>
+                                    <th>Delete</th>
+                                    
+                                </tr>
+                            </thead>
 
-                        <tr>
-                            <?php if(isset($_SESSION["userList"]) && !empty($_SESSION["userList"])) {
-                                   foreach ($_SESSION["userList"] as $key) {
+                            <tr>
+                                <?php if(isset($_SESSION["userList"]) && !empty($_SESSION["userList"])) {
+                                    foreach ($_SESSION["userList"] as $key) {
+                                ?>
+
+                                <td><?php echo $key['Firstname_User']; ?></td>
+                                <td><?php echo $key['Name_User']; ?></td>
+                                <td><?php echo $key['Mail']; ?></td>
+                                <td><?php echo $key['Cpt_Denonce']; ?></td>
+                                <td><form action="..\C\deleteUser.action.php" method="POST">
+                                    <button name="ID_User" value="<?php echo $key['ID_User']; ?>">DELETE</button>
+                                    </form>
+                                </td>
+                            </tr>
+
+                            <?php
+                            }}
                             ?>
 
-                            <td><?php echo $key['Firstname_User']; ?></td>
-                            <td><?php echo $key['Name_User']; ?></td>
-                            <td><?php echo $key['Mail']; ?></td>
-                            <td><?php echo $key['Cpt_Denonce']; ?></td>
-                            <td><form action="..\C\deleteUser.action.php" method="POST">
-                                <button name="ID_User" value="<?php echo $key['ID_User']; ?>">DELETE</button>
-                                </form>
-                            </td>
-                        </tr>
-
-                        <?php
-                        }}
-                        ?>
-
-                    </table>   
+                        </table>   
+                    </div>
                 </div>
             </div>
 
@@ -95,7 +97,7 @@ if (isset($_SESSION['user_id'])) {
                 <a href="../C/readUser.action.php" class="stripe__item">
                     <p class="text_slide">User List </p>
                 </a>
-                <a href="penalityForm.php" class="stripe__item">
+                <a href="../C/formDenounce.action.php" class="stripe__item">
                     <p class="text_slide"> Denounce </p>
                 </a>
             </div>

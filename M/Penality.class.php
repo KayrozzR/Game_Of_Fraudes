@@ -3,9 +3,9 @@ class Penality
 {
     private ?int $id_penality;
     private string $libelle;
-    private int $price;
+    private float $price;
 
-    public function __construct(string $libelle, int $price, ?int $id_penality = null)
+    public function __construct(string $libelle, float $price, ?int $id_penality = null)
     {
         $this->id_penality = $id_penality;
         $this->libelle = $libelle;
@@ -22,7 +22,7 @@ class Penality
         return $this->libelle;
     }
 
-    public function getPrice(): int
+    public function getPrice(): float
     {
         return $this->price;
     }

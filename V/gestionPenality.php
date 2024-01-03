@@ -49,7 +49,7 @@ if (isset($_SESSION['user_id'])) {
 
         <section class="lp">
 
-            <div class="textcenter">
+            <div class="textpenalities">
                 <p>Penalities</p>
                 <br>
                 <div class="TabPenality">
@@ -58,7 +58,6 @@ if (isset($_SESSION['user_id'])) {
                         <table class="fl-table">
                             <thead>
                                 <tr>
-                                    <th>ID</th>
                                     <th>Libelle</th>
                                     <th>Price</th>
                                     <th>Delete</th>
@@ -68,7 +67,6 @@ if (isset($_SESSION['user_id'])) {
                                 <?php foreach ($_SESSION["penality"] as $key) {
 
                                 ?>
-                                    <td><?php echo $key['ID_Penality']; ?></td>
                                     <td><?php echo $key['Libelle']; ?></td>
                                     <td><?php echo $key['Price']; ?></td>
 
@@ -88,7 +86,7 @@ if (isset($_SESSION['user_id'])) {
                     </div>
                     <form action="../C/createPenality.action.php" method="POST" class="formRegister">
                         <input name="Libelle" type="text" placeholder="Libelle of the punition" required /><br>
-                        <input name="Price" type="text" placeholder="Price of the punition" required /><br>
+                        <input name="Price" type="decimal" placeholder="Price of the punition" required /><br>
                         <button>Submit</button>
                     </form>
 
@@ -107,7 +105,7 @@ if (isset($_SESSION['user_id'])) {
                 <a href="../C/readUser.action.php" class="stripe__item">
                     <p class="text_slide">User List </p>
                 </a>
-                <a href="penalityForm.php" class="stripe__item">
+                <a href="../C/formDenounce.action.php" class="stripe__item">
                     <p class="text_slide"> Denounce </p>
                 </a>
             </div>

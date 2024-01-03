@@ -46,7 +46,7 @@ if (isset($_SESSION['user_id'])) {
 
         <section class="lp">
 
-            <div class="textcenter">
+            <div class="textdenounce">
                 <p>Denounce</p>
                 <br>
                 <form action="..\C\createDebt.action.php" method="POST" class="formPenality">
@@ -116,7 +116,7 @@ if (isset($_SESSION['user_id'])) {
         <a href="../C/readUser.action.php" class="stripe__item">
           <p class="text_slide">User List </p>
         </a>
-        <a href="penalityForm.php" class="stripe__item">
+        <a href="../C/formDenounce.action.php" class="stripe__item">
           <p class="text_slide"> Denounce </p>
         </a>
       </div>

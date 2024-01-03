@@ -20,14 +20,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $Inputemail = $_POST['email'];
     $Inputpassword = $_POST['password'];
     
-    if (trim($_POST['email'])&&trim($_POST['password'])== !NULL) {
-        if(DB_Manager::login($mailUser, $passwordUser)){
-            $_SESSION["autoriser"] = "oui";
-            $user = (DB_Manager::readUsers($Inputemail)[0]);
-            $_SESSION["userGiver"] = new User ($user["Name_User"],$user["Firstname_User"],$user["Tel"],$user["Mail"],$user["password"]);
-            $_SESSION["ID_userGiver"] = $user ["ID_User"];
-        }
-    }
+    // if (trim($_POST['email'])&&trim($_POST['password'])== !NULL) {
+    //     if(DB_Manager::login($Inputemail, $Inputpassword)){
+    //         $_SESSION["autoriser"] = "oui";
+    //         $user = (DB_Manager::readUserConnect($Inputemail)[0]);
+    //         $_SESSION["userGiver"] = new User ($user["Name_User"],$user["Firstname_User"],$user["Tel"],$user["Mail"],$user["password"]);
+    //         $_SESSION["ID_userGiver"] = $user ["ID_User"];
+    //         $_SESSION["Prenom"] = $user["Firstname_User"];
+    //         $_SESSION["Nom"] = $user["Name_User"];
+    //     }
+    // }
      $authentication = DB_Manager::login($Inputemail, $Inputpassword);
     
     header("Location:../V/index.php");
@@ -36,5 +38,7 @@ else {
     header('Location:../V/error.php');
 }
 
+$Inputemail = $_POST['email'];
+$_SESSION["recup"] = DB_Manager::readUserConnect($Inputemail);
 
 ?>

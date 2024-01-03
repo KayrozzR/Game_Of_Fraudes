@@ -3,6 +3,7 @@
 /** @author Tina */
 session_start();
 
+
 // Vérifiez si l'utilisateur est connecté
 if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     header("location: login.php");
@@ -42,7 +43,7 @@ if (isset($_SESSION['user_id'])) {
    </nav>
     <div>
      <ul class="nav navbar-nav navbar-nav-first">
-     <a href="profil.php" class="profilButton" >PROFIL: <?php echo $status_message; ?> </a>
+     <a href="../C/readProfil.action.php" class="profilButton" >PROFIL: <?php echo $status_message; ?> </a>
         </ul>
     </div>
 
@@ -51,22 +52,39 @@ if (isset($_SESSION['user_id'])) {
             <div class="textcenter">
                 
                 <p>Profil</p>
-                <form action="#" method="POST" class="formProfil">
-                    <label for="name">Name: <?php echo $user_name; ?></label>
-                    <br>
-                    <label for="firstname">Firstname: <?php echo $user_firstname; ?></label>
-                    <br>
-                    <label for="debt">Debt: 0.50€</label>
-                    <br>
+                <form action="../C/updateUser.action.php" method = "POST"></form>
+                <div class="table-wrapper">
+                    <table class="fl-table">
+                        <thead>
+                            <tr>
+                                <th>FirstName</th>
+                                <th>Name</th>
+                                <th>Mail</th>
+                                <th>Tel</th>
+                                
+                            </tr>
+                        </thead>
 
-                    <label for="mail">Mail: <?php echo $user_mail; ?></label>
-                    <br>
-                    <label for="tel">Tel: <?php echo $user_tel; ?></label>
-                    <br>
-                    <div class="button-group">
+                        <tr>
+                            <?php 
+                                   foreach ($_SESSION["recup"] as $key) {
+                            ?>
+
+                            <td><?php echo $key["FIRSTNAME_USER"]; ?></td>
+                            <td><?php echo $key['NAME_USER']; ?></td>
+                            <td><?php echo $key['MAIL']; ?></td>
+                            <td><?php echo $key['TEL']; ?></td>
+                            
+                                </form>
+                            </td>
+                        </tr>
+                        <?php } ?>
+                        <div class="button-group">
                         <li><a href="modifyProfil.php" id="modify-btn">Modify</a></li>
                     </div>
-                </form>
+
+                    </table>   
+                </div>
                 
                 <?php if ($isConnected): ?>
                 <form method="post" action="..\C\logout.action.php">
@@ -89,7 +107,7 @@ if (isset($_SESSION['user_id'])) {
         <a href="../C/readUser.action.php" class="stripe__item">
           <p class="text_slide">User List </p>
         </a>
-        <a href="penalityForm.php" class="stripe__item">
+        <a href="../C/formDenounce.action.php" class="stripe__item">
           <p class="text_slide"> Denounce </p>
         </a>
       </div>

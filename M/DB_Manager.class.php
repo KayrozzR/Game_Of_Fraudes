@@ -14,6 +14,15 @@ class DB_Manager {
     return $listUsers;
 }
 
+public static function readUserConnect($mail) : array {
+    $bdd = new PDO('mysql:host=localhost;dbname=game_of_fraudes;charset=utf8mb4', 'root', '');
+    $sql = "SELECT NAME_USER, FIRSTNAME_USER, MAIL, TEL, Password, ID_User FROM user WHERE MAIL = ? ;";
+    $stmt= $bdd->prepare($sql);
+    $stmt->execute([$mail]);
+    $tabUser = $stmt->fetchAll(PDO::FETCH_ASSOC); 
+    return $tabUser;
+}
+
 /** @author Mathilde <mathilde.brx@gmail.com>*/
 //methode qui ajoute une personne dans la DB
 public static function createUser(User $user) : void {       
@@ -157,11 +166,11 @@ public static function updatePenality_Price($Price, $id_Penality): void {
         $stmt->execute([$Price, $id_Penality]);
         }
 
-public static function updateDebt($status,$idDebt) : void {
+public static function updateDebt($idDebt) : void {
     $bdd = new PDO('mysql:host=localhost;dbname=game_of_fraudes;charset=utf8mb4', 'root', '');
-    $sql = "UPDATE debt SET `Status` = ? WHERE Nb_Debt = ?";
+    $sql = "UPDATE debt SET `Status` = 0 WHERE Nb_Debt = ?";
     $stmt = $bdd->prepare($sql);
-    $stmt->execute([$status, $idDebt]);
+    $stmt->execute([$idDebt]);
     }
 
     public static function createDebt(Debt $debt): void
@@ -250,7 +259,7 @@ public static function updateDebt($status,$idDebt) : void {
 //fonction qui ajoute 1 au compteur dénounce d'un user 
 public static function addCptDenounce($idUser): void {
     $bdd = new PDO('mysql:host=localhost;dbname=Game_of_fraudes;charset=utf8mb4', 'root', '');
-    $sql = "UPDATE user SET Cpt_Denonce = +1 WHERE ID_USER = id_Denounce";
+    $sql = "UPDATE user SET CPT_DENONCE = +1 WHERE ID_USER = ?";
     $stmt= $bdd->prepare($sql);
     $stmt->execute([$idUser]);
 }

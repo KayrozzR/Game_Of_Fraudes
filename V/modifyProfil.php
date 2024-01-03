@@ -52,16 +52,24 @@ if (isset($_SESSION['user_id'])) {
                 <form action="..\C\updateUser.action.php" method="POST" class="formProfil">
                     <label for="name">Name: <?php echo $user_name; ?></label>
                     <br>
-                    <label for="firstname">Firstname: <?php echo $user_firstname; ?></label>
-                    <br>
-                    <label for="debt">Debt: 0.50€</label>
-                    <br>
-
+                    <label for="firstname">Firstname: <?php echo $user_firstname; ?></label><br>
                     <label for="Mail">Mail:</label>
                     <input type="Mail" id="Mail" name="Mail" required>
 
+
+                    <div class="button-group">
+                        <li><button type="submit" id="modify-btn">Validate</button></li>
+                    </div>
+                </form>
+                <form action="..\C\updateUserTel.action.php" method="POST" class="formProfil">
+                    <!-- <label for="name">Name: <?php echo $user_name; ?></label>
+                    <br>
+                    <label for="firstname">Firstname: <?php echo $user_firstname; ?></label>
+                    <br>
+                    <label for="debt">Debt: 0.50€</label>
+                    <br> -->
                     <label for="Tel">Tel:</label>
-                    <input type="Tel" id="Tel" name="Tel" required>
+                    <input type="Tel" id="Tel" name="Tel">
                     <div class="button-group">
                         <li><button type="submit" id="modify-btn">Validate</button></li>
                     </div>
@@ -78,7 +86,7 @@ if (isset($_SESSION['user_id'])) {
         <a href="../C/readUser.action.php" class="stripe__item">
           <p class="text_slide">User List </p>
         </a>
-        <a href="penalityForm.php" class="stripe__item">
+        <a href="../C/formDenounce.action.php" class="stripe__item">
           <p class="text_slide"> Denounce </p>
         </a>
       </div>

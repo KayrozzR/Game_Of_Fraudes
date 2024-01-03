@@ -64,7 +64,7 @@ $debt = new Debt(
 // Enregistrer la dette dans la base de données
 DB_Manager::createDebt($debt);
 
-// DB_Manager::addCptDenounce($userGiver);
+DB_Manager::addCptDenounce($userGiverId);
 
 $_SESSION["debt"] = DB_Manager::readDebts();
 header("Location:../V/debtHistorique.php");

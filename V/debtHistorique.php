@@ -3,7 +3,6 @@
 /** @author Tina, Mathilde */
 
 session_start();
-
 // Vérifiez si l'utilisateur est connecté
 if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     header("location: login.php");
@@ -46,43 +45,41 @@ if (isset($_SESSION['user_id'])) {
     </div>
 
         <section class="lp">
-            <div class="textcenter">
+            <div class="texthistorique">
                 <p>Historique</p>
+                <div class= "TabHistorique">
         
-                <div class="table-wrapper">
-                    <table class="fl-table" id="monFormulaire" >
-                        <thead>
-                        <tr>
-                            <th onclick="trierTableau(0)">Victim</th>
-                            <th onclick="trierTableau(1)">Why?</th>
-                            <th onclick="trierTableau(2)">Details</th>
-                            <th onclick="trierTableau(3)">When?</th>
-                            <th onclick="trierTableau(4)">Price</th>
-                            <th onclick="trierTableau(5)">Status</th>
-                            <th onclick="trierTableau(6)">Paid</th>
-    </tr>
-                        </thead>
-                        <form action="..\C\readDebt.action.php" method="post" onsubmit="disableCheckbox()">
-                        <tr>
-                              <?php if(isset($_SESSION["debt"]) && !empty($_SESSION["debt"])) {
-                                   foreach ($_SESSION["debt"] as $key) { ?>
+                    <div class="table-wrapper">
+                        <table class="fl-table" id="monFormulaire" >
+                            <thead>
+                            <tr>
+                                <th onclick="trierTableau(0)">Victim</th>
+                                <th onclick="trierTableau(1)">Why?</th>
+                                <th onclick="trierTableau(2)">Details</th>
+                                <th onclick="trierTableau(3)">When?</th>
+                                <th onclick="trierTableau(4)">Price</th>
+                                <th onclick="trierTableau(5)">Status</th>
+                                <th onclick="trierTableau(6)">Paid</th>
+        </tr>
+                            </thead>
+                            <form action="..\C\updateHistorique.action.php" method="POST">
+                            <tr>
 
-                            <td><?php echo $key['Firstname_User']; ?></td>
-                            <td><?php echo $key['Libelle']; ?></td>
-                            <td><?php echo $key['Detail']; ?></td>
-                            <td><?php echo $key['Date']; ?></td>
-                            <td><?php echo $key['Price']; ?></td>
-                            <td><?php echo $key['Status']; ?></td>
-                            <td> <input type="checkbox" class="paiementCheckbox" name="paiement[]" value= 0 /></td></td>
-                        </tr> <?php
-                               }} ?>
-                    </table> 
-                    <th>Total to paid: </th>
-                    <td> 0€</td>
+                                    <?php  foreach ($_SESSION["debt"] as $key) { ?>
+                                <td><?php echo $key['Firstname_User']; ?></td>
+                                <td><?php echo $key['Libelle']; ?></td>
+                                <td><?php echo $key['Detail']; ?></td>
+                                <td><?php echo $key['Date']; ?></td>
+                                <td><?php echo $key['Price']; ?></td>
+                                <td><?php echo $key['Status']; ?></td>
+                                <td><button name="idDebt" value = "<?php echo $key['Nb_Debt']; ?>" >PAID!</button></td> 
+                                
+                            </tr> <?php
+                                } ?>
+                        </table> 
+                    </form>
                     <br>
-                    <input type="submit" value="PAID!">
-                </form>
-                <br>
+                </div>    
 <div>
 <p>Total Debt = 
             <?php 
@@ -92,7 +89,7 @@ if (isset($_SESSION['user_id'])) {
   
             }
             echo $totalDebt;
-            ?>
+            ?> €
             </p>
 </div>
                 
@@ -109,7 +106,7 @@ if (isset($_SESSION['user_id'])) {
                 <a href="../C/readUser.action.php" class="stripe__item">
                     <p class="text_slide">User List </p>
                 </a>
-                <a href="penalityForm.php" class="stripe__item">
+                <a href="../C/formDenounce.action.php" class="stripe__item">
                     <p class="text_slide"> Denounce </p>
                 </a>
             </div>

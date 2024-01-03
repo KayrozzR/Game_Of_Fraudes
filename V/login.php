@@ -45,7 +45,7 @@
         <a href="../C/readUser.action.php" class="stripe__item">
           <p class="text_slide">User List </p>
         </a>
-        <a href="penalityForm.php" class="stripe__item">
+        <a href="../C/formDenounce.action.php" class="stripe__item">
           <p class="text_slide"> Denounce </p>
         </a>
       </div>

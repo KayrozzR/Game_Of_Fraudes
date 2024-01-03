@@ -3,6 +3,7 @@
 /** @author Mathilde */
 session_start();
 
+
 $isConnected = isset($_SESSION['user_id']) && !empty($_SESSION['user_id']);
 
 if (isset($_SESSION['user_id'])) {
@@ -35,7 +36,7 @@ if (isset($_SESSION['user_id'])) {
    </nav>
     <div>
      <ul class="nav navbar-nav navbar-nav-first">
-       <a href="profil.php" class="profilButton" >PROFIL: <?php echo $status_message; ?> </a>
+       <a href="../C/readProfil.action.php" class="profilButton" >PROFIL: <?php echo $status_message; ?> </a>
         </ul>
     </div>
 
@@ -55,8 +56,7 @@ if (isset($_SESSION['user_id'])) {
 
         </div>
       </div>
-
-
+      
 
       <div class="stripe">
         <a href="../C/readPenality.action.php" class="stripe__item">
@@ -68,7 +68,7 @@ if (isset($_SESSION['user_id'])) {
         <a href="../C/readUser.action.php" class="stripe__item">
           <p class="text_slide">User List </p>
         </a>
-        <a href="penalityForm.php" class="stripe__item">
+        <a href="../C/formDenounce.action.php" class="stripe__item">
           <p class="text_slide"> Denounce </p>
         </a>
       </div>
