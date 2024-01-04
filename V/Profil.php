@@ -31,89 +31,81 @@ if (isset($_SESSION['user_id'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Game of Fraudes - Profil </title>
+    <title>Game of Fraudes - Users List</title>
     <link rel="stylesheet" href="style.css">
     <link href='https://fonts.googleapis.com/css?family=Julius Sans One' rel='stylesheet'>
 </head>
 
 <body>
-    <div class="pageIndex">
+     <div class="pageIndex">
     <nav>   
      <h1> <a href="index.php">Game of<br> Fraudes </a></h1>
    </nav>
     <div>
      <ul class="nav navbar-nav navbar-nav-first">
-     <a href="profil.php" class="profilButton" >PROFIL: <?php echo $status_message; ?> </a>
+     <a href="profil.php" class="profilButton" > PROFIL: <?php echo $status_message; ?> </a>
         </ul>
     </div>
-
-        <section class="lp">
-
-            <div class="textcenter">
-                
-                <p>Profil</p>
-                <form action="../C/updateUser.action.php" method = "POST"></form>
-                <div class="table-wrapper">
-                    <table class="fl-table">
-                        <thead>
-                            <tr>
-                                <th>FirstName</th>
-                                <th>Name</th>
-                                <th>Mail</th>
-                                <th>Tel</th>
-                                
-                            </tr>
-                        </thead>
-
-                        <tr>
-                            <?php 
-                                   foreach ($_SESSION["recup"] as $key) {
-                            ?>
-
-                            <td><?php echo $key["FIRSTNAME_USER"]; ?></td>
-                            <td><?php echo $key['NAME_USER']; ?></td>
-                            <td><?php echo $key['MAIL']; ?></td>
-                            <td><?php echo $key['TEL']; ?></td>
-                            
-                                </form>
-                            </td>
-                        </tr>
-                        <?php } ?>
-                        <div class="button-group">
-                        <li><a href="modifyProfil.php" id="modify-btn">Modify</a></li>
-                    </div>
-
-                    </table>   
-                </div>
-                
-                <?php if ($isConnected): ?>
+    
+    <?php if ($isConnected): ?>
                 <form method="post" action="..\C\logout.action.php">
                   <!-- <a href="..\C\logout.action.php" id="disconnect-btn">Disconnect</a> -->
-                <input type="submit" name="logout" value="Se déconnecter" class="logout-btn">
+                <input type="submit" class="button" name="logout" value="Se déconnecter" class="logout-btn">
                 </form>
                 <?php endif; ?>
+
+        <section class="lp">
+            <div class="texthistorique">
+                <p>Profil</p>
+                <div class= "TabHistorique">
+        
+                    <div class="table-wrapper">
+                        <table class="fl-table">
+                            <thead>
+                            <tr>
+                                <th>FirstName</th>
+                                <th >Name</th>
+                                <th >Mail</th>
+                                <th >Tel</th>
+                                <th >modify</th>
+                                
+                            
+        </tr>
+                            </thead>
+                            <tr>
+
+                                    <?php foreach ($_SESSION["recup"] as $key) { ?>
+                                        <td><?php echo $key["FIRSTNAME_USER"]; ?></td>     
+                                        <td><?php echo $key['NAME_USER']; ?></td>
+                                        <td><?php echo $key['MAIL']; ?></td>
+                                        <td><?php echo $key['TEL']; ?></td>
+                                        <td><div class="button-group"><li><a href="modifyProfil.php" id="modify-btn">Modify</a></li></div></td>
+
+                            </tr> <?php
+                                } ?>
+                        </table> 
+                    </div>    
+                
+                </div>
             </div>
 
-
-        
-
             <div class="lp__item stripe">
-        <a href="../C/readPenality.action.php" class="stripe__item">
-          <p class="text_slide"> Penalities Tab </p>
-        </a>
-        <a href="../C/readDebt.action.php" class="stripe__item">
-          <p class="text_slide"> Debt Historique </p>
-        </a>
-        <a href="../C/readUser.action.php" class="stripe__item">
-          <p class="text_slide">User List </p>
-        </a>
-        <a href="../C/formDenounce.action.php" class="stripe__item">
-          <p class="text_slide"> Denounce </p>
-        </a>
-      </div>
-
+                <a href="../C/readPenality.action.php" class="stripe__item">
+                    <p class="text_slide"> Penalities Tab </p>
+                </a>
+                <a href="../C/readDebt.action.php" class="stripe__item">
+                    <p class="text_slide"> Debt Historique </p>
+                </a>
+                <a href="../C/readUser.action.php" class="stripe__item">
+                    <p class="text_slide">User List </p>
+                </a>
+                <a href="../C/formDenounce.action.php" class="stripe__item">
+                    <p class="text_slide"> Denounce </p>
+                </a>
+            </div>
         </section>
     </div>
+    <script src="script.js"></script>
 </body>
 
 </html>
