@@ -49,18 +49,18 @@ if (isset($_SESSION['user_id'])) {
             <div class="textcenter">
                 
                 <p>Profil</p>
-                <form action="..\C\updateUser.action.php" method="POST" class="formProfil">
+                <form action="..\C\updateUser.action.php" method="POST" class="formProfil"><br>
                     <label for="name">Name: <?php echo $user_name; ?></label>
                     <br>
                     <label for="firstname">Firstname: <?php echo $user_firstname; ?></label><br>
                     <label for="Mail">Mail:</label>
-                    <input type="Mail" id="Mail" name="Mail" required>
+                    <input type="Mail" id="Mail" name="Mail" required><br>
 
 
-                    <div class="button-group">
-                        <li><button type="submit" id="modify-btn">Validate</button></li>
-                    </div>
-                </form>
+                    
+                    <button type="submit" id="modify-btn">Validate</button><br>
+                    
+                </form><br>
                 <form action="..\C\updateUserTel.action.php" method="POST" class="formProfil">
                     <!-- <label for="name">Name: <?php echo $user_name; ?></label>
                     <br>
@@ -68,11 +68,12 @@ if (isset($_SESSION['user_id'])) {
                     <br>
                     <label for="debt">Debt: 0.50€</label>
                     <br> -->
-                    <label for="Tel">Tel:</label>
-                    <input type="Tel" id="Tel" name="Tel">
-                    <div class="button-group">
-                        <li><button type="submit" id="modify-btn">Validate</button></li>
-                    </div>
+                    <br>
+                    <label for="Tel">Tel:</label><br>
+                    <input type="Tel" id="Tel" name="Tel"required><br>
+                
+                        <button type="submit" id="modify-btn">Validate</button><br>
+                    
                 </form>
             </div> 
 
