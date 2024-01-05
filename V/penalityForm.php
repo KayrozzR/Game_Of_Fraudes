@@ -54,7 +54,7 @@ if (isset($_SESSION['user_id'])) {
 <!-- Utilisateur connecté -->
 <input type="hidden" name="idUser" value="<?php echo $_SESSION['user_id']; ?>">
 
-<label for="denounceWhom">Whom: </label>
+<label for="denounceWhom">Who: </label>
 <select name="idReceiver" placeholder="idReceiver">
     <option value="">Select a firstname</option>
     <?php foreach ($_SESSION["userList"] as $key) : ?>
