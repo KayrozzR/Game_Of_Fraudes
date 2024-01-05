@@ -61,6 +61,50 @@ $debt = new Debt(
 );
 
 
+
+require '..\Composer\vendor\autoload.php';
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
+// Paramètres SMTP de Gmail
+$smtpHost = "smtp.gmail.com";
+$smtpUsername = "lorosimonpro@gmail.com";
+$smtpPassword = "umtp tals sewj vixh";
+$smtpPort = 587; // Utilisez le port 465 avec SSL si cela ne fonctionne pas avec le port 587
+
+// Destinataire
+$toEmail = 'loro-simon@live.fr';
+$subject = 'test';
+$body = 'ceci est un test';
+
+// Créez une instance de PHPMailer
+$mail = new PHPMailer(true);
+
+
+    // Paramètres SMTP
+    $mail->isSMTP();
+    $mail->Host = $smtpHost;
+    $mail->SMTPAuth = true;
+    $mail->Username = $smtpUsername;
+    $mail->Password = $smtpPassword;
+    $mail->SMTPSecure = 'tls'; // Utilisez 'ssl' si vous utilisez le port 465 avec SSL
+    $mail->Port = $smtpPort;
+
+    // Destinataire
+    $mail->setFrom($smtpUsername, 'Simon');
+    $mail->addAddress($toEmail);
+
+    // Contenu de l'e-mail
+    $mail->isHTML(true);
+    $mail->Subject = $subject;
+    $mail->Body = $body;
+
+    // Envoyer l'e-mail
+    $mail->send();
+
+
 // Enregistrer la dette dans la base de données
 DB_Manager::createDebt($debt);
 
@@ -68,4 +112,5 @@ DB_Manager::addCptDenounce($userGiverId);
 
 $_SESSION["debt"] = DB_Manager::readDebts();
 header("Location:../V/debtHistorique.php");
+
 ?>
